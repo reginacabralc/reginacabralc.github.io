@@ -84,7 +84,7 @@ h2.section-title em{color:var(--coral);font-style:italic}
 .sp-amber{background:rgba(255,179,71,0.2);color:#FFD280}
 .sp-purple{background:rgba(167,139,250,0.2);color:#C4B5FD}
 .projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
-.proj-card{background:var(--card);border:1px solid var(--border);border-radius:1.5rem;padding:2rem;position:relative;overflow:hidden;transition:all 0.3s}
+.proj-card{background:var(--card);border:1px solid var(--border);border-radius:1.5rem;padding:2rem;position:relative;overflow:hidden;transition:all 0.3s;display:flex;flex-direction:column}
 .proj-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px}
 .proj-card:nth-child(1)::before{background:linear-gradient(90deg,var(--coral),var(--amber))}
 .proj-card:nth-child(2)::before{background:linear-gradient(90deg,var(--teal),var(--purple))}
@@ -93,8 +93,10 @@ h2.section-title em{color:var(--coral);font-style:italic}
 .proj-emoji{font-size:2rem;margin-bottom:1rem;display:block}
 .proj-card h3{font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;letter-spacing:-0.01em}
 .proj-card p{color:var(--muted);font-size:0.87rem;line-height:1.7;margin-bottom:1.25rem}
-.proj-tags{display:flex;flex-wrap:wrap;gap:0.4rem}
+.proj-tags{display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1.25rem}
 .proj-tag{padding:0.2rem 0.6rem;border-radius:100px;font-size:0.7rem;font-weight:600;font-family:'DM Mono',monospace;background:var(--light);color:var(--muted);border:1px solid var(--border)}
+.proj-link{margin-top:auto;display:inline-flex;align-items:center;gap:0.5rem;text-decoration:none;color:var(--ink);font-weight:700;font-size:0.82rem}
+.proj-link:hover{color:var(--coral)}
 .exp-timeline{display:flex;flex-direction:column;gap:2rem;position:relative;padding-left:2rem}
 .exp-timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--coral),var(--purple),var(--teal))}
 .exp-item{position:relative;background:var(--card);border:1px solid var(--border);border-radius:1.25rem;padding:1.75rem 2rem}
@@ -118,12 +120,12 @@ h2.section-title em{color:var(--coral);font-style:italic}
 .contact-bg .section-label::before{display:none}
 .contact-bg h2{color:white;margin-bottom:1rem}
 .contact-bg p{color:rgba(255,255,255,0.6);max-width:500px;margin:0 auto 2.5rem;font-size:1rem;line-height:1.7}
-.contact-links{display:flex;justify-content:center;gap:1.25rem;flex-wrap:wrap}
-.contact-link{display:flex;align-items:center;gap:0.5rem;padding:0.75rem 1.5rem;border-radius:100px;text-decoration:none;font-weight:700;font-size:0.85rem;transition:all 0.2s}
+.contact-links{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap}
+.contact-link{display:flex;align-items:center;gap:0.6rem;padding:0.75rem 1.2rem;border-radius:100px;text-decoration:none;font-weight:700;font-size:0.85rem;transition:all 0.2s}
+.contact-link svg{width:18px;height:18px;fill:currentColor}
 .cl-email{background:var(--coral);color:white}
-.cl-linkedin{background:rgba(255,255,255,0.1);color:white;border:1px solid rgba(255,255,255,0.2)}
-.cl-github{background:rgba(255,255,255,0.1);color:white;border:1px solid rgba(255,255,255,0.2)}
-.cl-email:hover,.cl-linkedin:hover,.cl-github:hover{transform:translateY(-3px);opacity:0.9}
+.cl-linkedin,.cl-github,.cl-instagram{background:rgba(255,255,255,0.1);color:white;border:1px solid rgba(255,255,255,0.2)}
+.cl-email:hover,.cl-linkedin:hover,.cl-github:hover,.cl-instagram:hover{transform:translateY(-3px);opacity:0.9}
 footer{text-align:center;padding:2rem;font-size:0.8rem;color:var(--muted);border-top:1px solid var(--border)}
 @keyframes spin{to{transform:rotate(360deg)}}
 @keyframes blob{0%,100%{border-radius:60% 40% 70% 30%/50% 60% 40% 50%}50%{border-radius:40% 60% 30% 70%/60% 40% 60% 40%}}
@@ -136,11 +138,28 @@ footer{text-align:center;padding:2rem;font-size:0.8rem;color:var(--muted);border
 .bar-label{display:flex;justify-content:space-between;font-size:0.82rem;font-weight:600}
 .bar-track{height:8px;background:rgba(167,139,250,0.2);border-radius:100px;overflow:hidden}
 .bar-fill{height:100%;border-radius:100px;transition:width 1.5s ease}
-.bar-py{background:linear-gradient(90deg,var(--coral),var(--amber));width:90%}
+.bar-py{background:linear-gradient(90deg,var(--coral),var(--amber));width:85%}
 .bar-sql{background:linear-gradient(90deg,var(--teal),var(--purple));width:80%}
 .bar-java{background:linear-gradient(90deg,var(--purple),var(--coral));width:70%}
-.bar-pd{background:linear-gradient(90deg,var(--amber),var(--teal));width:85%}
+.bar-pd{background:linear-gradient(90deg,var(--amber),var(--teal));width:80%}
 .bar-en{background:linear-gradient(90deg,var(--coral),var(--purple));width:95%}
+@media (max-width: 1024px){
+  .hero,.about-grid,.skills-grid,.projects-grid,.interests-grid{grid-template-columns:1fr 1fr}
+  .hero{padding:7rem 2rem 3rem}
+  section{padding:5rem 2rem}
+}
+@media (max-width: 768px){
+  nav{padding:1rem 1.25rem}
+  .nav-links{gap:1rem}
+  .hero,.about-grid,.skills-grid,.projects-grid,.interests-grid{grid-template-columns:1fr}
+  .avatar-wrap{width:300px;height:300px}
+  .about-stats{grid-template-columns:1fr 1fr}
+}
+@media (max-width: 520px){
+  .nav-links{display:none}
+  .about-stats{grid-template-columns:1fr}
+  .contact-links{flex-direction:column}
+}
 </style>
 </head>
 <body>
@@ -158,14 +177,14 @@ footer{text-align:center;padding:2rem;font-size:0.8rem;color:var(--muted);border
 <section class="hero">
   <div class="hero-text fade-up">
     <div class="hero-eyebrow">Data Scientist · ITAM</div>
-    <h1 class="hero-name">Regina<br><span>Cabral.</span></h1>
+    <h1 class="hero-name">Regina<br><span>Cabral</span></h1>
     <p class="hero-title">Transformo datos en <strong>historias visuales</strong>.<br>Apasionada por encontrar patrones donde otros ven ruido.</p>
     <div class="hero-chips">
       <span class="chip chip-coral">🐍 Python</span>
-      <span class="chip chip-teal">📊 Data Viz</span>
-      <span class="chip chip-purple">🗄️ SQL</span>
-      <span class="chip chip-amber">🔢 Estadística</span>
-      <span class="chip chip-coral">📐 Teoría de Información</span>
+      <span class="chip chip-teal">🗄️ SQL</span>
+      <span class="chip chip-purple">🎲 Probabilidad</span>
+      <span class="chip chip-amber">☕ Java</span>
+      <span class="chip chip-coral">🐼 Pandas</span>
     </div>
     <div class="hero-cta">
       <a href="#projects" class="btn btn-primary">Ver proyectos</a>
@@ -178,38 +197,36 @@ footer{text-align:center;padding:2rem;font-size:0.8rem;color:var(--muted);border
       <div class="avatar-bg-ring"></div>
       <div class="avatar-bg-blob"></div>
       <div class="avatar-svg">
-        <svg width="280" height="280" viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg">
-          <ellipse cx="140" cy="230" rx="62" ry="45" fill="#FFE0D4"/>
-          <path d="M85 215 Q90 190 140 188 Q190 190 195 215 Q175 255 140 258 Q105 255 85 215Z" fill="#A78BFA"/>
-          <rect x="128" y="188" width="24" height="22" rx="5" fill="#C8956A"/>
-          <ellipse cx="140" cy="155" rx="52" ry="55" fill="#C8956A"/>
-          <path d="M88 145 Q82 110 95 85 Q110 60 140 58 Q170 60 185 85 Q198 110 192 145" fill="#4A2C0A"/>
-          <path d="M88 145 Q78 165 82 185 Q86 200 92 210" fill="#4A2C0A" stroke="#4A2C0A" stroke-width="18" stroke-linecap="round" fill="none"/>
-          <path d="M192 145 Q202 165 198 185 Q194 200 188 210" fill="#4A2C0A" stroke="#4A2C0A" stroke-width="18" stroke-linecap="round" fill="none"/>
-          <path d="M92 120 Q100 85 120 72 Q140 62 160 72 Q180 85 188 120" fill="#4A2C0A"/>
-          <path d="M87 150 Q93 140 99 148 Q105 156 111 147" fill="none" stroke="#3A1C00" stroke-width="2.5" stroke-linecap="round"/>
-          <path d="M181 150 Q175 140 169 148 Q163 156 157 147" fill="none" stroke="#3A1C00" stroke-width="2.5" stroke-linecap="round"/>
-          <ellipse cx="122" cy="155" rx="7" ry="8" fill="white"/>
-          <ellipse cx="158" cy="155" rx="7" ry="8" fill="white"/>
-          <ellipse cx="123" cy="156" rx="4.5" ry="5.5" fill="#3A1C00"/>
-          <ellipse cx="159" cy="156" rx="4.5" ry="5.5" fill="#3A1C00"/>
-          <circle cx="124" cy="155" r="1.5" fill="white"/>
-          <circle cx="160" cy="155" r="1.5" fill="white"/>
-          <path d="M114 144 Q122 140 130 143" fill="none" stroke="#3A1C00" stroke-width="2.5" stroke-linecap="round"/>
-          <path d="M150 143 Q158 140 166 144" fill="none" stroke="#3A1C00" stroke-width="2.5" stroke-linecap="round"/>
-          <path d="M137 165 Q140 172 143 165" fill="none" stroke="#A06040" stroke-width="1.8" stroke-linecap="round"/>
-          <path d="M126 178 Q140 188 154 178" fill="none" stroke="#A06040" stroke-width="2.5" stroke-linecap="round"/>
-          <ellipse cx="112" cy="170" rx="10" ry="6" fill="rgba(255,150,120,0.3)"/>
-          <ellipse cx="168" cy="170" rx="10" ry="6" fill="rgba(255,150,120,0.3)"/>
-          <circle cx="89" cy="168" r="5" fill="#FF6B6B"/>
-          <circle cx="89" cy="175" r="4" fill="#FFB347"/>
-          <circle cx="191" cy="168" r="5" fill="#FF6B6B"/>
-          <circle cx="191" cy="175" r="4" fill="#FFB347"/>
-          <rect x="95" y="235" width="90" height="55" rx="6" fill="#2D2D4E"/>
-          <rect x="99" y="239" width="82" height="42" rx="4" fill="#1A1A2E"/>
-          <rect x="103" y="243" width="74" height="34" rx="2" fill="#0F0F1E"/>
-          <polyline points="107,270 115,260 125,265 135,255 145,262 155,250 165,258 173,252" fill="none" stroke="#00C9A7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          <rect x="121" y="283" width="38" height="5" rx="2" fill="#3D3D5E"/>
+        <svg width="280" height="280" viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg" aria-label="Ilustración de Regina">
+          <defs>
+            <linearGradient id="shirtGrad" x1="0" x2="1">
+              <stop offset="0%" stop-color="#A78BFA"/>
+              <stop offset="100%" stop-color="#8B5CF6"/>
+            </linearGradient>
+          </defs>
+          <ellipse cx="140" cy="228" rx="66" ry="44" fill="#F7D9C7"/>
+          <path d="M86 220C95 194 113 186 140 186C167 186 185 194 194 220C180 246 163 258 140 258C117 258 100 246 86 220Z" fill="url(#shirtGrad)"/>
+          <rect x="126" y="182" width="28" height="25" rx="8" fill="#C68B67"/>
+          <ellipse cx="140" cy="146" rx="50" ry="56" fill="#C68B67"/>
+          <path d="M96 135C96 96 114 70 140 70C166 70 184 96 184 135V145C176 127 162 116 140 116C118 116 104 127 96 145V135Z" fill="#4B2E1A"/>
+          <path d="M101 124C112 89 132 78 160 85C173 88 181 96 186 107C183 84 165 62 140 62C115 62 97 84 94 112C95 116 98 120 101 124Z" fill="#4B2E1A"/>
+          <path d="M111 145C117 140 126 140 132 145" stroke="#3A2214" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <path d="M148 145C154 140 163 140 169 145" stroke="#3A2214" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <ellipse cx="123" cy="154" rx="7" ry="8" fill="#FFF"/>
+          <ellipse cx="157" cy="154" rx="7" ry="8" fill="#FFF"/>
+          <circle cx="124" cy="155" r="4.5" fill="#2F1B11"/>
+          <circle cx="158" cy="155" r="4.5" fill="#2F1B11"/>
+          <circle cx="126" cy="153" r="1.5" fill="#FFF"/>
+          <circle cx="160" cy="153" r="1.5" fill="#FFF"/>
+          <path d="M139 163C140.5 168 142 170 144 163" stroke="#A46348" stroke-width="2" stroke-linecap="round" fill="none"/>
+          <path d="M126 178C134 186 146 186 154 178" stroke="#A46348" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <ellipse cx="111" cy="170" rx="9" ry="5" fill="rgba(255,145,120,0.22)"/>
+          <ellipse cx="169" cy="170" rx="9" ry="5" fill="rgba(255,145,120,0.22)"/>
+          <path d="M95 237H185" stroke="#2D2D4E" stroke-width="46" stroke-linecap="round"/>
+          <rect x="97" y="236" width="86" height="46" rx="8" fill="#1A1A2E"/>
+          <rect x="102" y="241" width="76" height="36" rx="5" fill="#111827"/>
+          <polyline points="108,269 117,259 126,264 136,254 146,261 156,251 166,258 172,253" fill="none" stroke="#00C9A7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="120" y="282" width="40" height="5" rx="2" fill="#3D3D5E"/>
         </svg>
       </div>
       <div class="float-badge fb1"><span class="fb-dot"></span> GPA 9.75</div>
@@ -231,8 +248,6 @@ footer{text-align:center;padding:2rem;font-size:0.8rem;color:var(--muted);border
     <div class="about-stats">
       <div class="stat-card"><span class="stat-num">9.75</span><span class="stat-lbl">GPA / 10</span></div>
       <div class="stat-card"><span class="stat-num">3+</span><span class="stat-lbl">Proyectos publicados</span></div>
-      <div class="stat-card"><span class="stat-num">2K+</span><span class="stat-lbl">Municipios analizados</span></div>
-      <div class="stat-card"><span class="stat-num">2028</span><span class="stat-lbl">Egreso ITAM</span></div>
     </div>
   </div>
 </section>
@@ -270,13 +285,13 @@ footer{text-align:center;padding:2rem;font-size:0.8rem;color:var(--muted);border
       </div>
     </div>
     <div class="skill-group">
-      <div class="skill-icon">📐</div>
+      <div class="skill-icon">🎲</div>
       <h3>ESPECIALIDADES</h3>
       <div class="skill-pills">
         <span class="skill-pill sp-coral">Visualización</span>
-        <span class="skill-pill sp-teal">Estadística</span>
+        <span class="skill-pill sp-teal">Probabilidad</span>
         <span class="skill-pill sp-amber">Diagramas Voronoi</span>
-        <span class="skill-pill sp-purple">Teoría de Información</span>
+        <span class="skill-pill sp-purple">Pandas</span>
       </div>
     </div>
     <div class="skill-group">
@@ -304,11 +319,11 @@ footer{text-align:center;padding:2rem;font-size:0.8rem;color:var(--muted);border
   <h2 class="section-title">Mis <em>fortalezas</em></h2>
   <div class="skill-bars">
     <div class="bar-row">
-      <div class="bar-label"><span>Python</span><span>90%</span></div>
+      <div class="bar-label"><span>Python</span><span>85%</span></div>
       <div class="bar-track"><div class="bar-fill bar-py"></div></div>
     </div>
     <div class="bar-row">
-      <div class="bar-label"><span>Pandas / NumPy</span><span>85%</span></div>
+      <div class="bar-label"><span>Pandas / NumPy</span><span>80%</span></div>
       <div class="bar-track"><div class="bar-fill bar-pd"></div></div>
     </div>
     <div class="bar-row">
@@ -336,9 +351,10 @@ footer{text-align:center;padding:2rem;font-size:0.8rem;color:var(--muted);border
       <p>Estrategia óptima de resolución combinando tablas de entropía máxima precalculadas con lógica adaptativa basada en teoría de información.</p>
       <div class="proj-tags">
         <span class="proj-tag">Python</span>
-        <span class="proj-tag">Teoría de Información</span>
         <span class="proj-tag">Entropía</span>
+        <span class="proj-tag">Algoritmos</span>
       </div>
+      <a class="proj-link" href="https://github.com/gabonavarroo/torneo_wordle" target="_blank" rel="noopener noreferrer">Ver en GitHub →</a>
     </div>
     <div class="proj-card">
       <span class="proj-emoji">🚗</span>
@@ -349,6 +365,7 @@ footer{text-align:center;padding:2rem;font-size:0.8rem;color:var(--muted);border
         <span class="proj-tag">4NF</span>
         <span class="proj-tag">Análisis de datos</span>
       </div>
+      <a class="proj-link" href="https://github.com/alo54/Proyecto-Bases-de-Datos" target="_blank" rel="noopener noreferrer">Ver en GitHub →</a>
     </div>
     <div class="proj-card">
       <span class="proj-emoji">📦</span>
@@ -360,13 +377,14 @@ footer{text-align:center;padding:2rem;font-size:0.8rem;color:var(--muted);border
         <span class="proj-tag">Open Source</span>
         <span class="proj-tag">Probabilidad</span>
       </div>
+      <a class="proj-link" href="https://github.com/reginacabralc/libreria_datafake" target="_blank" rel="noopener noreferrer">Ver en GitHub →</a>
     </div>
   </div>
 </section>
 
 <section id="experience" style="background:var(--light)">
   <div class="section-label">Trayectoria</div>
-  <h2 class="section-title">Lo que he <em>construido</em></h2>
+  <h2 class="section-title">Otras <em>actividades</em></h2>
   <div class="exp-timeline">
     <div class="exp-item">
       <div class="exp-meta">
@@ -374,7 +392,7 @@ footer{text-align:center;padding:2rem;font-size:0.8rem;color:var(--muted);border
         <span class="exp-year">2024</span>
       </div>
       <h3>Participante — Optimización geoespacial</h3>
-      <p>Identificación de ubicaciones óptimas para 200 farmacias en México usando datos INEGI/DENUE y diagramas de Voronoi en más de 2,000 municipios.</p>
+      <p>Identificación de ubicaciones óptimas para 200 farmacias en México usando datos INEGI/DENUE y diagramas de Voronoi.</p>
     </div>
     <div class="exp-item">
       <div class="exp-meta">
@@ -383,22 +401,6 @@ footer{text-align:center;padding:2rem;font-size:0.8rem;color:var(--muted);border
       </div>
       <h3>Voluntaria — Servicio comunitario</h3>
       <p>Coordinación de eventos culturales y distribución de alimentos para poblaciones vulnerables. Trabajo en equipo y liderazgo comunitario.</p>
-    </div>
-    <div class="exp-item">
-      <div class="exp-meta">
-        <span class="exp-place">Bachillerato Alexander Bain</span>
-        <span class="exp-year">2023–2024</span>
-      </div>
-      <h3>Vicepresidenta — Consejo Estudiantil</h3>
-      <p>Representación del estudiantado en decisiones institucionales y coordinación de eventos culturales y campañas de donación.</p>
-    </div>
-    <div class="exp-item">
-      <div class="exp-meta">
-        <span class="exp-place">Model United Nations — BAB</span>
-        <span class="exp-year">2019–2023</span>
-      </div>
-      <h3>Chair's President & Delegate — MUN</h3>
-      <p>Liderazgo en estrategia y comunicación del equipo. Análisis de perspectivas geopolíticas y propuesta de soluciones a conflictos globales.</p>
     </div>
   </div>
 </section>
@@ -427,29 +429,31 @@ footer{text-align:center;padding:2rem;font-size:0.8rem;color:var(--muted);border
 
 <section id="contact" class="contact-bg">
   <div class="section-label">Contacto</div>
-  <h2 class="section-title" style="color:white;margin-bottom:1rem">¿Hablamos de <em>datos</em>?</h2>
+  <h2 class="section-title">¿Hablamos de <em>datos</em>?</h2>
   <p>Siempre estoy abierta a nuevas oportunidades, colaboraciones o simplemente platicar sobre data science. ¡Escríbeme!</p>
   <div class="contact-links">
-    <a href="mailto:reginacabralc24@gmail.com" class="contact-link cl-email">📧 reginacabralc24@gmail.com</a>
-    <a href="https://linkedin.com/in/TU-USUARIO" class="contact-link cl-linkedin">💼 LinkedIn</a>
-    <a href="https://github.com/TU-USUARIO" class="contact-link cl-github">🐙 GitHub</a>
+    <a class="contact-link cl-email" href="mailto:reginacabralc24@gmail.com">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm0 2v.2l9 6.3 9-6.3V7l-9 6-9-6Z"/></svg>
+      Email
+    </a>
+    <a class="contact-link cl-linkedin" href="https://www.linkedin.com/in/reginacabral/" target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.94 8.5H3.56V20h3.38V8.5ZM5.25 3A2.03 2.03 0 1 0 5.3 7.06 2.03 2.03 0 0 0 5.25 3ZM20.44 13.02c0-3.45-1.84-5.05-4.3-5.05-1.98 0-2.87 1.1-3.37 1.87V8.5H9.4c.04.89 0 11.5 0 11.5h3.37v-6.42c0-.34.02-.68.12-.92.27-.68.88-1.38 1.9-1.38 1.34 0 1.88 1.03 1.88 2.54V20h3.37v-6.98Z"/></svg>
+      LinkedIn
+    </a>
+    <a class="contact-link cl-github" href="https://github.com/reginacabralc" target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5A12 12 0 0 0 8.2 23.9c.6.1.82-.27.82-.58v-2.04c-3.34.73-4.04-1.42-4.04-1.42-.55-1.38-1.34-1.74-1.34-1.74-1.1-.76.08-.75.08-.75 1.21.09 1.85 1.25 1.85 1.25 1.08 1.85 2.84 1.31 3.53 1 .1-.8.42-1.31.76-1.61-2.67-.3-5.48-1.34-5.48-5.96 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23a11.46 11.46 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.67 1.65.25 2.87.12 3.17.77.84 1.24 1.91 1.24 3.22 0 4.63-2.82 5.66-5.5 5.96.43.38.82 1.1.82 2.22v3.29c0 .32.21.7.83.58A12 12 0 0 0 12 .5Z"/></svg>
+      GitHub
+    </a>
+    <a class="contact-link cl-instagram" href="https://www.instagram.com/reginacabraal" target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2.2A2.8 2.8 0 0 0 4.2 7v10A2.8 2.8 0 0 0 7 19.8h10a2.8 2.8 0 0 0 2.8-2.8V7A2.8 2.8 0 0 0 17 4.2H7Zm10.25 1.65a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2.2a2.8 2.8 0 1 0 0 5.6 2.8 2.8 0 0 0 0-5.6Z"/></svg>
+      Instagram
+    </a>
   </div>
 </section>
 
 <footer>
-  <p>Diseñado con 💜 por Regina Cabral · 2025</p>
+  Diseñado por Regina Cabral 2025
 </footer>
 
-<script>
-const bars = document.querySelectorAll('.bar-fill');
-const obs = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if(e.isIntersecting) {
-      e.target.style.width = e.target.style.width || getComputedStyle(e.target).width;
-    }
-  });
-},{threshold:0.3});
-bars.forEach(b => obs.observe(b));
-</script>
 </body>
 </html>
