@@ -320,12 +320,76 @@ footer{text-align:center;padding:2rem;font-size:0.8rem;color:var(--muted);border
   display:block;
   flex:0 0 auto;
 }
+.education-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:1.5rem;
+}
+
+.edu-card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:1.5rem;
+  padding:1.75rem 2rem;
+  box-shadow:0 8px 24px rgba(167,139,250,0.08);
+}
+
+.edu-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:1rem;
+  margin-bottom:0.75rem;
+}
+
+.edu-card h3{
+  font-size:1.05rem;
+  font-weight:700;
+  margin-bottom:0.25rem;
+  color:var(--ink);
+}
+
+.edu-degree{
+  color:var(--muted);
+  font-size:0.95rem;
+  line-height:1.6;
+}
+
+.edu-meta{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  gap:0.2rem;
+  font-size:0.82rem;
+  color:var(--muted);
+  font-family:'DM Mono',monospace;
+  white-space:nowrap;
+}
+
+.edu-detail{
+  color:var(--ink2);
+  font-size:0.92rem;
+  margin-bottom:0.75rem;
+}
+
+.edu-list{
+  padding-left:1.2rem;
+  color:var(--muted);
+  line-height:1.8;
+  font-size:0.92rem;
+}
+
+.edu-list li{
+  margin-bottom:0.2rem;
+}
 @media (max-width: 768px){
   nav{padding:1rem 1.25rem}
   .nav-links{gap:1rem}
   .hero,.about-grid,.skills-grid,.projects-grid,.interests-grid{grid-template-columns:1fr}
   .avatar-wrap{width:300px;height:300px}
   .about-stats{grid-template-columns:1fr 1fr}
+  .edu-top{flex-direction:column;}
+  .edu-meta{align-items:flex-start;}
 }
 @media (max-width: 520px){
   .nav-links{display:none}
@@ -391,6 +455,45 @@ footer{text-align:center;padding:2rem;font-size:0.8rem;color:var(--muted);border
     <div class="about-stats">
       <div class="stat-card"><span class="stat-num">9.75</span><span class="stat-lbl">GPA / 10</span></div>
       <div class="stat-card"><span class="stat-num">3+</span><span class="stat-lbl">Published projects</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="education" style="background:var(--light)">
+  <div class="section-label">Education</div>
+  <h2 class="section-title">My <em>education</em></h2>
+
+  <div class="education-grid">
+    <div class="edu-card">
+      <div class="edu-top">
+        <div>
+          <h3>Instituto Tecnológico Autónomo de México (ITAM)</h3>
+          <p class="edu-degree">B.S. in Data Science</p>
+        </div>
+        <div class="edu-meta">
+          <span>Mexico City, MX</span>
+          <span>Expected 2028</span>
+        </div>
+      </div>
+      <p class="edu-detail"><strong>GPA:</strong> 9.75 / 10</p>
+      <ul class="edu-list">
+        <li>Academic Merit Scholarship 2024</li>
+        <li>Academic Excellence Recognition 2025</li>
+      </ul>
+    </div>
+
+    <div class="edu-card">
+      <div class="edu-top">
+        <div>
+          <h3>Bachillerato Alexander Bain (BAB)</h3>
+          <p class="edu-degree">High School, International Baccalaureate (IB)</p>
+        </div>
+        <div class="edu-meta">
+          <span>Mexico City, MX</span>
+          <span>2024</span>
+        </div>
+      </div>
+      <p class="edu-detail"><strong>GPA:</strong> 9.81 &nbsp; <strong>IB Score:</strong> 31</p>
     </div>
   </div>
 </section>
