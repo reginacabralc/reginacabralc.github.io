@@ -602,109 +602,6 @@ footer{text-align:center;padding:2rem;font-size:0.8rem;color:var(--muted);border
   margin-top:1rem;
 }
 
-.about-merged{
-  display:grid;
-  grid-template-columns:1.4fr 0.8fr;
-  gap:2rem;
-  align-items:start;
-  margin-top:1.5rem;
-}
-
-.about-main-card{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:1.75rem;
-  padding:2rem;
-  box-shadow:0 8px 24px rgba(167,139,250,0.08);
-}
-
-.about-subtitle{
-  font-size:1.15rem;
-  font-weight:700;
-  color:var(--ink);
-  margin-bottom:1rem;
-}
-
-.about-main-card p{
-  color:var(--muted);
-  line-height:1.9;
-  font-size:1rem;
-}
-
-.about-mini-grid{
-  display:grid;
-  grid-template-columns:1fr;
-  gap:1rem;
-  margin-top:1.5rem;
-}
-
-.about-mini-card{
-  background:var(--light);
-  border:1px solid var(--border);
-  border-radius:1.2rem;
-  padding:1rem 1.1rem;
-}
-
-.about-mini-card h4{
-  font-size:0.95rem;
-  font-weight:700;
-  color:var(--ink);
-  margin-bottom:0.4rem;
-}
-
-.about-mini-card p{
-  font-size:0.92rem;
-  line-height:1.7;
-  color:var(--muted);
-}
-
-.about-side-stats{
-  display:grid;
-  grid-template-columns:1fr;
-  gap:1rem;
-}
-
-.about-second-block{
-  margin-top:3rem;
-}
-
-.interest-card{
-  border-radius:1.6rem;
-  padding:2rem 1.5rem;
-  text-align:center;
-}
-
-.interest-emoji{
-  display:block;
-  font-size:2rem;
-  margin-bottom:1rem;
-}
-
-.interest-card h4{
-  font-size:1.15rem;
-  font-weight:700;
-  color:var(--ink);
-  margin-bottom:0.7rem;
-}
-
-.interest-card p{
-  color:var(--muted);
-  line-height:1.7;
-  font-size:0.95rem;
-}
-
-.interest-travel{
-  background:#fbe7e7;
-}
-
-.interest-reading{
-  background:#dff5f1;
-}
-
-.interest-f1{
-  background:#f8edd5;
-}
-
 @media (max-width: 768px){
   nav{padding:1rem 1.25rem}
   .nav-links{gap:1rem}
@@ -717,7 +614,6 @@ footer{text-align:center;padding:2rem;font-size:0.8rem;color:var(--muted);border
   .github-grid-split{grid-template-columns:1fr;}
   #githubRepoChart{height:240px !important;}
   .github-stats-img-compact{max-height:none;}
-  .about-merged{grid-template-columns:1fr;}
 }
 @media (max-width: 520px){
   .nav-links{display:none}
@@ -837,6 +733,33 @@ footer{text-align:center;padding:2rem;font-size:0.8rem;color:var(--muted);border
   </div>
 </section>
 
+<section id="education" style="background:var(--light)">
+  <div class="section-label">Education</div>
+  <h2 class="section-title">My <em>education</em></h2>
+
+  <div class="education-grid">
+<div class="edu-card">
+  <div class="edu-top">
+    <div class="edu-left">
+      <img src="/assets/itam-logo.jpg" alt="ITAM logo" class="edu-logo">
+      <div>
+        <h3>Instituto Tecnológico Autónomo de México (ITAM)</h3>
+        <p class="edu-degree">B.S. in Data Science</p>
+      </div>
+    </div>
+
+    <div class="edu-meta">
+      <span>Mexico City, MX</span>
+      <span>Expected 2028</span>
+    </div>
+  </div>
+
+  <p class="edu-detail"><strong>GPA:</strong> 9.75 / 10</p>
+  <ul class="edu-list">
+    <li>Academic Merit Scholarship 2024</li>
+    <li>Academic Excellence Recognition 2025</li>
+  </ul>
+</div>
 
 <div class="edu-card">
     <div class="edu-top">
