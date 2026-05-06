@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -72,7 +72,7 @@ h1.hero-name{
 h1.hero-name span{color:var(--coral);font-style:italic}
 .hero-title{
   font-size:1.1rem;color:var(--muted);margin-bottom:2rem;
-  font-weight:400;line-height:1.6
+  font-weight:400;line-height:1.6;max-width:620px
 }
 .hero-chips{display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:2.5rem}
 .chip{padding:0.35rem 0.9rem;border-radius:100px;font-size:0.78rem;font-weight:600;letter-spacing:0.03em}
@@ -282,10 +282,10 @@ footer{text-align:center;padding:2rem;font-size:0.8rem;color:var(--muted);border
 <nav>
   <span class="nav-logo">RC</span>
   <ul class="nav-links">
-    <li><a href="#about">Acerca</a></li>
+    <li><a href="#about">About</a></li>
     <li><a href="#skills">Skills</a></li>
-    <li><a href="#projects">Proyectos</a></li>
-    <li><a href="#contact">Contacto</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
 
@@ -293,17 +293,17 @@ footer{text-align:center;padding:2rem;font-size:0.8rem;color:var(--muted);border
   <div class="hero-text fade-up">
     <div class="hero-eyebrow">Data Scientist · ITAM</div>
     <h1 class="hero-name">Regina<br><span>Cabral</span></h1>
-    <p class="hero-title">Transformo datos en <strong>historias visuales</strong>.<br>Apasionada por encontrar patrones donde otros ven ruido.</p>
+    <p class="hero-title">Data science student passionate about learning, building, and turning data into meaningful insights.</p>
     <div class="hero-chips">
       <span class="chip chip-coral">🐍 Python</span>
       <span class="chip chip-teal">🗄️ SQL</span>
-      <span class="chip chip-purple">🎲 Probabilidad</span>
+      <span class="chip chip-purple">🎲 Probability</span>
       <span class="chip chip-amber">☕ Java</span>
       <span class="chip chip-coral">🐼 Pandas</span>
     </div>
     <div class="hero-cta">
-      <a href="#projects" class="btn btn-primary">Ver proyectos</a>
-      <a href="#contact" class="btn btn-outline">Contáctame</a>
+      <a href="#projects" class="btn btn-primary">View projects</a>
+      <a href="#contact" class="btn btn-outline">Contact me</a>
     </div>
   </div>
 
@@ -311,8 +311,8 @@ footer{text-align:center;padding:2rem;font-size:0.8rem;color:var(--muted);border
     <div class="avatar-wrap">
       <div class="avatar-card">
         <img
-          src="assets/regina-illustration.png"
-          alt="Ilustración minimalista de Regina trabajando en laptop"
+          src="/assets/regina-illustration.png"
+          alt="Minimalist illustration of Regina working on a laptop"
           class="avatar-img"
         />
       </div>
@@ -325,28 +325,28 @@ footer{text-align:center;padding:2rem;font-size:0.8rem;color:var(--muted);border
 </section>
 
 <section id="about" style="background:white">
-  <div class="section-label">Sobre mí</div>
+  <div class="section-label">About me</div>
   <div class="about-grid">
     <div class="about-text">
-      <h2 class="section-title">Datos, código<br>y <em>curiosidad</em></h2>
-      <p>Soy estudiante de Ciencia de Datos en el ITAM con beca por mérito académico. Me apasiona transformar datos complejos en visualizaciones que cuenten historias claras y poderosas.</p>
-      <p>Desde diseñar esquemas relacionales hasta publicar librerías en PyPI, disfruto cada capa del pipeline de datos. Cuando no estoy programando, me encuentras leyendo, viajando o siguiendo la F1 🏎️.</p>
-      <p>Actualmente busco oportunidades para aplicar mis habilidades en proyectos con impacto real.</p>
+      <h2 class="section-title">Data, code,<br>and <em>curiosity</em></h2>
+      <p>I am a Data Science student at ITAM with a merit-based academic scholarship. I enjoy transforming complex data into visualizations that tell clear and compelling stories.</p>
+      <p>From designing relational schemas to publishing libraries on PyPI, I enjoy every layer of the data pipeline. When I am not coding, you will probably find me reading, traveling, or following Formula 1 🏎️.</p>
+      <p>I am currently looking for opportunities to apply my skills to projects with real impact.</p>
     </div>
     <div class="about-stats">
       <div class="stat-card"><span class="stat-num">9.75</span><span class="stat-lbl">GPA / 10</span></div>
-      <div class="stat-card"><span class="stat-num">3+</span><span class="stat-lbl">Proyectos publicados</span></div>
+      <div class="stat-card"><span class="stat-num">3+</span><span class="stat-lbl">Published projects</span></div>
     </div>
   </div>
 </section>
 
 <section id="skills" class="skills-bg">
-  <div class="section-label">Habilidades</div>
-  <h2 class="section-title">Mi <em>stack</em> técnico</h2>
+  <div class="section-label">Skills</div>
+  <h2 class="section-title">My technical <em>stack</em></h2>
   <div class="skills-grid">
     <div class="skill-group">
       <div class="skill-icon">🐍</div>
-      <h3>LENGUAJES</h3>
+      <h3>LANGUAGES</h3>
       <div class="skill-pills">
         <span class="skill-pill sp-coral">Python</span>
         <span class="skill-pill sp-teal">SQL</span>
@@ -355,7 +355,7 @@ footer{text-align:center;padding:2rem;font-size:0.8rem;color:var(--muted);border
     </div>
     <div class="skill-group">
       <div class="skill-icon">📦</div>
-      <h3>LIBRERÍAS</h3>
+      <h3>LIBRARIES</h3>
       <div class="skill-pills">
         <span class="skill-pill sp-teal">Pandas</span>
         <span class="skill-pill sp-purple">NumPy</span>
@@ -364,7 +364,7 @@ footer{text-align:center;padding:2rem;font-size:0.8rem;color:var(--muted);border
     </div>
     <div class="skill-group">
       <div class="skill-icon">🛠️</div>
-      <h3>HERRAMIENTAS</h3>
+      <h3>TOOLS</h3>
       <div class="skill-pills">
         <span class="skill-pill sp-amber">Git</span>
         <span class="skill-pill sp-teal">GitHub</span>
@@ -374,27 +374,27 @@ footer{text-align:center;padding:2rem;font-size:0.8rem;color:var(--muted);border
     </div>
     <div class="skill-group">
       <div class="skill-icon">🎲</div>
-      <h3>ESPECIALIDADES</h3>
+      <h3>SPECIALTIES</h3>
       <div class="skill-pills">
-        <span class="skill-pill sp-coral">Visualización</span>
-        <span class="skill-pill sp-teal">Probabilidad</span>
-        <span class="skill-pill sp-amber">Diagramas Voronoi</span>
+        <span class="skill-pill sp-coral">Visualization</span>
+        <span class="skill-pill sp-teal">Probability</span>
+        <span class="skill-pill sp-amber">Voronoi Diagrams</span>
         <span class="skill-pill sp-purple">Pandas</span>
       </div>
     </div>
     <div class="skill-group">
       <div class="skill-icon">🌎</div>
-      <h3>IDIOMAS</h3>
+      <h3>LANGUAGES</h3>
       <div class="skill-pills">
-        <span class="skill-pill sp-teal">Español (nativo)</span>
-        <span class="skill-pill sp-coral">Inglés (fluido)</span>
+        <span class="skill-pill sp-teal">Spanish (native)</span>
+        <span class="skill-pill sp-coral">English (fluent)</span>
       </div>
     </div>
     <div class="skill-group">
       <div class="skill-icon">📊</div>
-      <h3>BASES DE DATOS</h3>
+      <h3>DATABASES</h3>
       <div class="skill-pills">
-        <span class="skill-pill sp-purple">Diseño relacional</span>
+        <span class="skill-pill sp-purple">Relational design</span>
         <span class="skill-pill sp-teal">4NF</span>
         <span class="skill-pill sp-coral">INEGI / DENUE</span>
       </div>
@@ -403,8 +403,8 @@ footer{text-align:center;padding:2rem;font-size:0.8rem;color:var(--muted);border
 </section>
 
 <section class="viz-section">
-  <div class="section-label">Nivel de habilidad</div>
-  <h2 class="section-title">Mis <em>fortalezas</em></h2>
+  <div class="section-label">Skill level</div>
+  <h2 class="section-title">My <em>strengths</em></h2>
   <div class="skill-bars">
     <div class="bar-row">
       <div class="bar-label"><span>Python</span><span>85%</span></div>
@@ -423,66 +423,66 @@ footer{text-align:center;padding:2rem;font-size:0.8rem;color:var(--muted);border
       <div class="bar-track"><div class="bar-fill bar-java"></div></div>
     </div>
     <div class="bar-row">
-      <div class="bar-label"><span>Inglés</span><span>95%</span></div>
+      <div class="bar-label"><span>English</span><span>95%</span></div>
       <div class="bar-track"><div class="bar-fill bar-en"></div></div>
     </div>
   </div>
 </section>
 
 <section id="projects" style="background:white">
-  <div class="section-label">Portafolio</div>
-  <h2 class="section-title">Proyectos <em>destacados</em></h2>
+  <div class="section-label">Portfolio</div>
+  <h2 class="section-title">Featured <em>projects</em></h2>
   <div class="projects-grid">
     <div class="proj-card">
       <span class="proj-emoji">🔤</span>
       <h3>Wordle Solver</h3>
-      <p>Estrategia óptima de resolución combinando tablas de entropía máxima precalculadas con lógica adaptativa basada en teoría de información.</p>
+      <p>An optimal solving strategy that combines precomputed maximum-entropy tables with adaptive logic based on information theory.</p>
       <div class="proj-tags">
         <span class="proj-tag">Python</span>
-        <span class="proj-tag">Entropía</span>
-        <span class="proj-tag">Algoritmos</span>
+        <span class="proj-tag">Entropy</span>
+        <span class="proj-tag">Algorithms</span>
       </div>
-      <a class="proj-link" href="https://github.com/gabonavarroo/torneo_wordle" target="_blank" rel="noopener noreferrer">Ver en GitHub →</a>
+      <a class="proj-link" href="https://github.com/gabonavarroo/torneo_wordle" target="_blank" rel="noopener noreferrer">View on GitHub →</a>
     </div>
 
     <div class="proj-card">
       <span class="proj-emoji">🚗</span>
       <h3>Chicago Traffic Accidents</h3>
-      <p>Diseño de esquema relacional en 4NF y análisis SQL para identificar los factores clave que contribuyen a accidentes de tráfico en Chicago.</p>
+      <p>Relational schema design in 4NF and SQL analysis to identify the key factors contributing to traffic accidents in Chicago.</p>
       <div class="proj-tags">
         <span class="proj-tag">SQL</span>
         <span class="proj-tag">4NF</span>
-        <span class="proj-tag">Análisis de datos</span>
+        <span class="proj-tag">Data analysis</span>
       </div>
-      <a class="proj-link" href="https://github.com/alo54/Proyecto-Bases-de-Datos" target="_blank" rel="noopener noreferrer">Ver en GitHub →</a>
+      <a class="proj-link" href="https://github.com/alo54/Proyecto-Bases-de-Datos" target="_blank" rel="noopener noreferrer">View on GitHub →</a>
     </div>
 
     <div class="proj-card">
       <span class="proj-emoji">📦</span>
       <h3>Open-Source Python Library</h3>
-      <p>Librería publicada en PyPI que genera datasets sintéticos realistas usando distribuciones probabilísticas. Disponible para la comunidad.</p>
+      <p>A PyPI-published library that generates realistic synthetic datasets using probabilistic distributions, available for the community.</p>
       <div class="proj-tags">
         <span class="proj-tag">Python</span>
         <span class="proj-tag">PyPI</span>
         <span class="proj-tag">Open Source</span>
-        <span class="proj-tag">Probabilidad</span>
+        <span class="proj-tag">Probability</span>
       </div>
-      <a class="proj-link" href="https://github.com/reginacabralc/libreria_datafake" target="_blank" rel="noopener noreferrer">Ver en GitHub →</a>
+      <a class="proj-link" href="https://github.com/reginacabralc/libreria_datafake" target="_blank" rel="noopener noreferrer">View on GitHub →</a>
     </div>
   </div>
 </section>
 
 <section id="experience" style="background:var(--light)">
-  <div class="section-label">Trayectoria</div>
-  <h2 class="section-title">Otras <em>actividades</em></h2>
+  <div class="section-label">Journey</div>
+  <h2 class="section-title">Other <em>activities</em></h2>
   <div class="exp-timeline">
     <div class="exp-item">
       <div class="exp-meta">
-        <span class="exp-place">ITAM Datatón</span>
+        <span class="exp-place">ITAM Datathon</span>
         <span class="exp-year">2024</span>
       </div>
-      <h3>Participante — Optimización geoespacial</h3>
-      <p>Identificación de ubicaciones óptimas para 200 farmacias en México usando datos INEGI/DENUE y diagramas de Voronoi.</p>
+      <h3>Participant — Geospatial optimization</h3>
+      <p>Identification of optimal locations for 200 pharmacies in Mexico using INEGI/DENUE data and Voronoi diagrams.</p>
     </div>
 
     <div class="exp-item">
@@ -490,38 +490,38 @@ footer{text-align:center;padding:2rem;font-size:0.8rem;color:var(--muted);border
         <span class="exp-place">ITAM Construye / BRICO</span>
         <span class="exp-year">2025</span>
       </div>
-      <h3>Voluntaria — Servicio comunitario</h3>
-      <p>Coordinación de eventos culturales y distribución de alimentos para poblaciones vulnerables. Trabajo en equipo y liderazgo comunitario.</p>
+      <h3>Volunteer — Community service</h3>
+      <p>Coordination of cultural events and food distribution for vulnerable communities, with a focus on teamwork and community leadership.</p>
     </div>
   </div>
 </section>
 
 <section style="background:white">
-  <div class="section-label">Más sobre mí</div>
-  <h2 class="section-title">Fuera del <em>código</em></h2>
+  <div class="section-label">Beyond work</div>
+  <h2 class="section-title">Outside of <em>code</em></h2>
   <div class="interests-grid">
     <div class="interest-card ic1">
       <span class="interest-icon">✈️</span>
-      <h3>Viajera</h3>
-      <p>Explorar nuevos lugares y culturas alimenta mi curiosidad y perspectiva global.</p>
+      <h3>Traveler</h3>
+      <p>Exploring new places and cultures keeps my curiosity active and broadens my perspective.</p>
     </div>
     <div class="interest-card ic2">
       <span class="interest-icon">📚</span>
-      <h3>Lectora</h3>
-      <p>Los libros son mi forma favorita de aprender y desconectarme del mundo digital.</p>
+      <h3>Reader</h3>
+      <p>Books are one of my favorite ways to learn and disconnect from the digital world.</p>
     </div>
     <div class="interest-card ic3">
       <span class="interest-icon">🏎️</span>
-      <h3>Fórmula 1</h3>
-      <p>La F1 combina perfectamente velocidad, datos, estrategia y emoción. ¡Mi deporte favorito!</p>
+      <h3>Formula 1</h3>
+      <p>F1 combines speed, data, strategy, and excitement. It is my favorite sport.</p>
     </div>
   </div>
 </section>
 
 <section id="contact" class="contact-bg">
-  <div class="section-label">Contacto</div>
-  <h2 class="section-title">¿Hablamos de <em>datos</em>?</h2>
-  <p>Siempre estoy abierta a nuevas oportunidades, colaboraciones o simplemente platicar sobre data science. ¡Escríbeme!</p>
+  <div class="section-label">Contact</div>
+  <h2 class="section-title">Let’s talk about <em>data</em></h2>
+  <p>I am always open to new opportunities, collaborations, or simply talking about data science. Feel free to reach out.</p>
   <div class="contact-links">
     <a class="contact-link cl-email" href="mailto:reginacabralc24@gmail.com">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm0 2v.2l9 6.3 9-6.3V7l-9 6-9-6Z"/></svg>
@@ -546,7 +546,7 @@ footer{text-align:center;padding:2rem;font-size:0.8rem;color:var(--muted);border
 </section>
 
 <footer>
-  Diseñado por Regina Cabral 2025
+  Designed by Regina Cabral 2025
 </footer>
 
 </body>
