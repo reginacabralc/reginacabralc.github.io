@@ -387,6 +387,22 @@ footer{text-align:center;padding:2rem;font-size:0.8rem;color:var(--muted);border
   display:block;
 }
 
+.edu-left{
+  display:flex;
+  align-items:flex-start;
+  gap:1rem;
+}
+
+.edu-logo{
+  width:64px;
+  height:64px;
+  object-fit:contain;
+  border-radius:0.75rem;
+  background:white;
+  padding:0.35rem;
+  flex-shrink:0;
+}
+
 @media (max-width: 768px){
   nav{padding:1rem 1.25rem}
   .nav-links{gap:1rem}
@@ -469,37 +485,47 @@ footer{text-align:center;padding:2rem;font-size:0.8rem;color:var(--muted);border
   <h2 class="section-title">My <em>education</em></h2>
 
   <div class="education-grid">
-    <div class="edu-card">
-      <div class="edu-top">
-        <div>
-          <h3>Instituto Tecnológico Autónomo de México (ITAM)</h3>
-          <p class="edu-degree">B.S. in Data Science</p>
-        </div>
-        <div class="edu-meta">
-          <span>Mexico City, MX</span>
-          <span>Expected 2028</span>
-        </div>
+<div class="edu-card">
+  <div class="edu-top">
+    <div class="edu-left">
+      <img src="/assets/itam-logo.jpg" alt="ITAM logo" class="edu-logo">
+      <div>
+        <h3>Instituto Tecnológico Autónomo de México (ITAM)</h3>
+        <p class="edu-degree">B.S. in Data Science</p>
       </div>
-      <p class="edu-detail"><strong>GPA:</strong> 9.75 / 10</p>
-      <ul class="edu-list">
-        <li>Academic Merit Scholarship 2024</li>
-        <li>Academic Excellence Recognition 2025</li>
-      </ul>
     </div>
 
-    <div class="edu-card">
-      <div class="edu-top">
+    <div class="edu-meta">
+      <span>Mexico City, MX</span>
+      <span>Expected 2028</span>
+    </div>
+  </div>
+
+  <p class="edu-detail"><strong>GPA:</strong> 9.75 / 10</p>
+  <ul class="edu-list">
+    <li>Academic Merit Scholarship 2024</li>
+    <li>Academic Excellence Recognition 2025</li>
+  </ul>
+</div>
+
+<div class="edu-card">
+    <div class="edu-top">
+      <div class="edu-left">
+        <img src="/assets/alexander-bain-logo.png" alt="Alexander Bain logo" class="edu-logo">
         <div>
           <h3>Bachillerato Alexander Bain (BAB)</h3>
           <p class="edu-degree">High School, International Baccalaureate (IB)</p>
         </div>
-        <div class="edu-meta">
-          <span>Mexico City, MX</span>
-          <span>2024</span>
-        </div>
       </div>
-      <p class="edu-detail"><strong>GPA:</strong> 9.81 &nbsp; <strong>IB Score:</strong> 31</p>
+
+      <div class="edu-meta">
+        <span>Mexico City, MX</span>
+        <span>2024</span>
+      </div>
     </div>
+
+    <p class="edu-detail"><strong>GPA:</strong> 9.81 &nbsp; <strong>IB Score:</strong> 31</p>
+  </div>
   </div>
 </section>
 
