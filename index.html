@@ -67,9 +67,15 @@ nav{
 }
 .hero-text{position:relative;z-index:1}
 .hero-eyebrow{
-  font-size:0.8rem;font-weight:700;letter-spacing:0.15em;
-  text-transform:uppercase;color:var(--teal);margin-bottom:1rem;
-  display:flex;align-items:center;gap:0.5rem
+  font-size:0.95rem;
+  font-weight:700;
+  letter-spacing:0.15em;
+  text-transform:uppercase;
+  color:var(--teal);
+  margin-bottom:1rem;
+  display:flex;
+  align-items:center;
+  gap:0.5rem;
 }
 .hero-eyebrow::before{content:'';width:2rem;height:2px;background:var(--teal)}
 h1.hero-name{
@@ -99,10 +105,20 @@ h1.hero-name span{color:var(--coral);font-style:italic}
   font-family:'Syne',sans-serif;font-weight:700;font-size:0.85rem;
   text-decoration:none;transition:all 0.2s;cursor:pointer;border:none;letter-spacing:0.02em
 }
-.btn-primary{background:var(--coral);color:white}
-.btn-primary:hover{background:#e55555;transform:translateY(-2px)}
-.btn-outline{background:transparent;color:var(--ink);border:2px solid var(--border)}
-.btn-outline:hover{border-color:var(--purple);color:var(--purple)}
+.btn-primary,
+.btn-outline{
+  background:var(--coral);
+  color:white;
+  border:2px solid var(--coral);
+}
+
+.btn-primary:hover,
+.btn-outline:hover{
+  background:#e55555;
+  border-color:#e55555;
+  color:white;
+  transform:translateY(-2px);
+}
 
 .hero-visual{
   display:flex;justify-content:center;align-items:center;position:relative;z-index:1
