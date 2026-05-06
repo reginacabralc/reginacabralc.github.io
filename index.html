@@ -601,6 +601,184 @@ footer{text-align:center;padding:2rem;font-size:0.8rem;color:var(--muted);border
 .github-pins{
   margin-top:1rem;
 }
+.about-wrap{
+  display:grid;
+  grid-template-columns:1.35fr 0.75fr;
+  gap:2rem;
+  align-items:start;
+  margin-top:1.8rem;
+}
+
+.about-main-card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:1.8rem;
+  padding:2rem;
+  box-shadow:0 10px 30px rgba(167,139,250,0.08);
+}
+
+.about-subtitle{
+  font-size:1.35rem;
+  font-weight:800;
+  color:var(--ink);
+  margin-bottom:1rem;
+}
+
+.about-text{
+  color:var(--muted);
+  font-size:1rem;
+  line-height:1.9;
+  margin-bottom:1.4rem;
+  max-width:95%;
+}
+
+.about-bubbles{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:1rem;
+  margin-top:1.2rem;
+}
+
+.about-bubble{
+  border-radius:1.4rem;
+  padding:1.2rem 1rem;
+  box-shadow:0 8px 22px rgba(0,0,0,0.04);
+  border:1px solid rgba(255,255,255,0.65);
+  transition:transform 0.2s ease;
+}
+
+.about-bubble:hover{
+  transform:translateY(-3px);
+}
+
+.about-bubble h4{
+  font-size:0.98rem;
+  font-weight:800;
+  margin-bottom:0.45rem;
+  color:var(--ink);
+}
+
+.about-bubble p{
+  font-size:0.92rem;
+  line-height:1.65;
+  color:var(--muted);
+}
+
+.bubble-coral{
+  background:linear-gradient(180deg, #FFE8E8 0%, #FFF1F1 100%);
+}
+
+.bubble-teal{
+  background:linear-gradient(180deg, #E6FAF5 0%, #F0FFFB 100%);
+}
+
+.bubble-purple{
+  background:linear-gradient(180deg, #F1ECFF 0%, #F8F4FF 100%);
+}
+
+.about-stats-column{
+  display:grid;
+  gap:1rem;
+}
+
+.about-stat-card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:1.6rem;
+  padding:2rem 1.4rem;
+  text-align:center;
+  box-shadow:0 10px 25px rgba(167,139,250,0.08);
+  position:relative;
+  overflow:hidden;
+}
+
+.about-stat-card::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:6px;
+}
+
+.stat-coral::before{
+  background:linear-gradient(90deg, #FF8A8A, #FF6B6B);
+}
+
+.stat-purple::before{
+  background:linear-gradient(90deg, #A78BFA, #8B5CF6);
+}
+
+.about-stat-number{
+  display:block;
+  font-family:'DM Serif Display', serif;
+  font-size:2.9rem;
+  line-height:1;
+  color:var(--ink);
+  margin-bottom:0.6rem;
+}
+
+.about-stat-label{
+  display:block;
+  font-size:0.98rem;
+  color:var(--muted);
+  font-weight:700;
+}
+
+.about-extra{
+  margin-top:3rem;
+}
+
+.interests-grid{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:1.2rem;
+  margin-top:1.2rem;
+}
+
+.interest-card{
+  border-radius:1.6rem;
+  padding:2rem 1.4rem;
+  text-align:center;
+  border:1px solid rgba(255,255,255,0.65);
+  box-shadow:0 8px 24px rgba(0,0,0,0.04);
+  transition:transform 0.2s ease;
+}
+
+.interest-card:hover{
+  transform:translateY(-4px);
+}
+
+.interest-emoji{
+  display:block;
+  font-size:2rem;
+  margin-bottom:0.8rem;
+}
+
+.interest-card h4{
+  font-size:1.1rem;
+  font-weight:800;
+  color:var(--ink);
+  margin-bottom:0.55rem;
+}
+
+.interest-card p{
+  color:var(--muted);
+  line-height:1.7;
+  font-size:0.94rem;
+}
+
+.interest-travel{
+  background:linear-gradient(180deg, #FCE9EA 0%, #FFF4F4 100%);
+}
+
+.interest-reading{
+  background:linear-gradient(180deg, #E4F8F3 0%, #F2FFFB 100%);
+}
+
+.interest-f1{
+  background:linear-gradient(180deg, #FBF0D7 0%, #FFF8EA 100%);
+}
 
 @media (max-width: 768px){
   nav{padding:1rem 1.25rem}
@@ -614,6 +792,17 @@ footer{text-align:center;padding:2rem;font-size:0.8rem;color:var(--muted);border
   .github-grid-split{grid-template-columns:1fr;}
   #githubRepoChart{height:240px !important;}
   .github-stats-img-compact{max-height:none;}
+      .about-wrap{
+      grid-template-columns:1fr;
+    }
+
+    .about-bubbles{
+      grid-template-columns:1fr;
+    }
+
+    .interests-grid{
+      grid-template-columns:1fr;
+    }
 }
 @media (max-width: 520px){
   .nav-links{display:none}
@@ -671,44 +860,48 @@ footer{text-align:center;padding:2rem;font-size:0.8rem;color:var(--muted);border
   <div class="section-label">About Me</div>
   <h2 class="section-title">Data, code, and <em>curiosity</em></h2>
 
-  <div class="about-merged">
+  <div class="about-wrap">
+    <!-- Left side -->
     <div class="about-main-card">
       <h3 class="about-subtitle">About Me</h3>
-      <p>
+
+      <p class="about-text">
         I’m a Data Science student who enjoys learning by building. I like working on projects that combine code, curiosity, and problem solving, especially when they turn messy data into something clear and useful.
       </p>
 
-      <div class="about-mini-grid">
-        <div class="about-mini-card">
+      <div class="about-bubbles">
+        <div class="about-bubble bubble-coral">
           <h4>What I enjoy</h4>
           <p>Analysis, visualization, probability, and learning through real projects.</p>
         </div>
 
-        <div class="about-mini-card">
+        <div class="about-bubble bubble-teal">
           <h4>What I build</h4>
           <p>Projects, libraries, and data work using tools like Python and SQL.</p>
         </div>
 
-        <div class="about-mini-card">
+        <div class="about-bubble bubble-purple">
           <h4>What I’m looking for</h4>
           <p>Opportunities to apply my skills to work with real impact.</p>
         </div>
       </div>
     </div>
 
-    <div class="about-side-stats">
-      <div class="stat-card">
-        <span class="stat-number">9.75</span>
-        <span class="stat-label">GPA / 10</span>
+    <!-- Right side -->
+    <div class="about-stats-column">
+      <div class="about-stat-card stat-coral">
+        <span class="about-stat-number">9.75</span>
+        <span class="about-stat-label">GPA / 10</span>
       </div>
-      <div class="stat-card">
-        <span class="stat-number">3+</span>
-        <span class="stat-label">Published projects</span>
+
+      <div class="about-stat-card stat-purple">
+        <span class="about-stat-number">3+</span>
+        <span class="about-stat-label">Open-source projects</span>
       </div>
     </div>
   </div>
 
-  <div class="about-second-block">
+  <div class="about-extra">
     <h3 class="about-subtitle">Outside of Code</h3>
 
     <div class="interests-grid">
