@@ -410,6 +410,50 @@ footer{text-align:center;padding:2rem;font-size:0.8rem;color:var(--muted);border
   display:block;
 }
 
+.github-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1.5rem;
+  margin-top:1.5rem;
+}
+
+.github-card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:1.5rem;
+  padding:1.5rem;
+  box-shadow:0 8px 24px rgba(167,139,250,0.08);
+}
+
+.github-card-wide{
+  grid-column:span 2;
+}
+
+.github-card h3,
+.github-pins-title{
+  font-size:1rem;
+  font-weight:700;
+  margin-bottom:1rem;
+  color:var(--ink);
+}
+
+.github-stats-img,
+.github-pin-img{
+  width:100%;
+  display:block;
+  border-radius:1rem;
+}
+
+.github-pins{
+  margin-top:2rem;
+}
+
+.github-pins-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:1rem;
+}
+
 @media (max-width: 768px){
   nav{padding:1rem 1.25rem}
   .nav-links{gap:1rem}
@@ -677,6 +721,64 @@ footer{text-align:center;padding:2rem;font-size:0.8rem;color:var(--muted);border
         <span class="proj-tag">Probability</span>
       </div>
       <a class="proj-link" href="https://github.com/reginacabralc/libreria_datafake" target="_blank" rel="noopener noreferrer">View on GitHub →</a>
+    </div>
+  </div>
+</section>
+
+<section id="github-highlights" style="background:var(--light)">
+  <div class="section-label">Dynamic Data</div>
+  <h2 class="section-title">GitHub <em>highlights</em></h2>
+
+  <div class="github-grid">
+    <div class="github-card github-card-wide">
+      <h3>GitHub Stats</h3>
+      <img
+        src="https://github-readme-stats.vercel.app/api?username=reginacabralc&show_icons=true&theme=transparent&hide_border=true&title_color=1A1A2E&text_color=6B6B8A&icon_color=FF6B6B"
+        alt="GitHub stats for Regina Cabral"
+        class="github-stats-img"
+      />
+    </div>
+
+    <div class="github-card">
+      <h3>Contributions</h3>
+      <img
+        src="https://github-readme-streak-stats.herokuapp.com/?user=reginacabralc&theme=transparent&hide_border=true&ring=FF6B6B&fire=FF6B6B&currStreakLabel=1A1A2E&sideLabels=6B6B8A&dates=6B6B8A&sideNums=1A1A2E&currStreakNum=1A1A2E"
+        alt="GitHub contribution streak for Regina Cabral"
+        class="github-stats-img"
+      />
+    </div>
+
+    <div class="github-card github-card-wide">
+      <h3>Profile Details</h3>
+      <img
+        src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=reginacabralc&theme=transparent"
+        alt="GitHub profile summary for Regina Cabral"
+        class="github-stats-img"
+      />
+    </div>
+  </div>
+
+  <div class="github-pins">
+    <h3 class="github-pins-title">Pinned Projects</h3>
+
+    <div class="github-pins-grid">
+      <img
+        src="https://github-readme-stats.vercel.app/api/pin/?username=gabonavarroo&repo=torneo_wordle&theme=transparent&hide_border=true&title_color=1A1A2E&text_color=6B6B8A&icon_color=FF6B6B"
+        alt="Pinned card for torneo_wordle"
+        class="github-pin-img"
+      />
+
+      <img
+        src="https://github-readme-stats.vercel.app/api/pin/?username=alo54&repo=Proyecto-Bases-de-Datos&theme=transparent&hide_border=true&title_color=1A1A2E&text_color=6B6B8A&icon_color=FF6B6B"
+        alt="Pinned card for Proyecto-Bases-de-Datos"
+        class="github-pin-img"
+      />
+
+      <img
+        src="https://github-readme-stats.vercel.app/api/pin/?username=reginacabralc&repo=libreria_datafake&theme=transparent&hide_border=true&title_color=1A1A2E&text_color=6B6B8A&icon_color=FF6B6B"
+        alt="Pinned card for libreria_datafake"
+        class="github-pin-img"
+      />
     </div>
   </div>
 </section>
