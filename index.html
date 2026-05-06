@@ -900,7 +900,7 @@ footer{text-align:center;padding:2rem;font-size:0.8rem;color:var(--muted);border
 
   <div class="github-grid github-grid-split">
     <div class="github-card">
-      <h3>Total Commits by Repository</h3>
+      <h3>Recent Contributions by Repository</h3>
       <canvas id="githubRepoChart"></canvas>
     </div>
 
@@ -1035,27 +1035,6 @@ footer{text-align:center;padding:2rem;font-size:0.8rem;color:var(--muted);border
 </footer>
 
 <script>
-async function fetchContributorStatsWithRetry(owner, repo, retries = 3, delay = 1200) {
-  const url = `https://api.github.com/repos/${owner}/${repo}/stats/contributors`;
-
-  for (let attempt = 0; attempt < retries; attempt++) {
-    const res = await fetch(url);
-
-    if (res.status === 200) {
-      return await res.json();
-    }
-
-    if (res.status === 202) {
-      await new Promise(resolve => setTimeout(resolve, delay));
-      continue;
-    }
-
-    return null;
-  }
-
-  return null;
-}
-
 async function loadGitHubMiniStats() {
   try {
     const username = "reginacabralc";
@@ -1075,30 +1054,23 @@ async function loadGitHubMiniStats() {
     document.getElementById("stars-count").textContent = totalStars;
     document.getElementById("forks-count").textContent = totalForks;
 
-    const ownRepos = Array.isArray(repos)
-      ? repos.filter(repo => !repo.fork && repo.owner && repo.owner.login === username)
-      : [];
+    const eventsRes = await fetch(`https://api.github.com/users/${username}/events/public?per_page=100`);
+    const events = await eventsRes.json();
 
-    const totals = [];
+    const repoCounts = {};
 
-    for (const repo of ownRepos) {
-      const stats = await fetchContributorStatsWithRetry(username, repo.name, 4, 1500);
-
-      if (!Array.isArray(stats)) continue;
-
-      const me = stats.find(item => item.author && item.author.login === username);
-      const totalCommits = me?.total || 0;
-
-      if (totalCommits > 0) {
-        totals.push({
-          name: repo.name,
-          commits: totalCommits
-        });
-      }
+    if (Array.isArray(events)) {
+      events.forEach(event => {
+        if (event.type === "PushEvent" && event.repo && event.repo.name) {
+          const repoName = event.repo.name.split("/")[1] || event.repo.name;
+          const commitCount = Array.isArray(event.payload?.commits) ? event.payload.commits.length : 1;
+          repoCounts[repoName] = (repoCounts[repoName] || 0) + commitCount;
+        }
+      });
     }
 
-    const sortedRepos = totals
-      .sort((a, b) => b.commits - a.commits)
+    const sortedRepos = Object.entries(repoCounts)
+      .sort((a, b) => b[1] - a[1])
       .slice(0, 6);
 
     const ctx = document.getElementById("githubRepoChart");
@@ -1107,10 +1079,10 @@ async function loadGitHubMiniStats() {
       new Chart(ctx, {
         type: "bar",
         data: {
-          labels: sortedRepos.map(item => item.name),
+          labels: sortedRepos.map(item => item[0]),
           datasets: [{
-            label: "Total Commits",
-            data: sortedRepos.map(item => item.commits),
+            label: "Recent Contributions",
+            data: sortedRepos.map(item => item[1]),
             backgroundColor: [
               "rgba(255,107,107,0.75)",
               "rgba(0,201,167,0.75)",
@@ -1144,7 +1116,7 @@ async function loadGitHubMiniStats() {
         }
       });
     } else if (ctx) {
-      ctx.parentElement.innerHTML += '<p style="color:#6B6B8A;font-size:0.95rem;">Not enough repository statistics are available yet to render the chart.</p>';
+      ctx.parentElement.innerHTML += '<p style="color:#6B6B8A;font-size:0.95rem;">Not enough recent public contribution data to render the chart yet.</p>';
     }
   } catch (error) {
     console.error("GitHub data could not be loaded", error);
