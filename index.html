@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Regina Cabral — Data Scientist</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --coral:#FF6B6B;--coral-light:#FFE5E5;--coral-mid:#FF9F9F;
+  --teal:#00C9A7;--teal-light:#E0FAF5;--teal-dark:#00856F;
+  --amber:#FFB347;--amber-light:#FFF4E0;
+  --purple:#A78BFA;--purple-light:#EDE9FE;
+  --ink:#1A1A2E;--ink2:#2D2D4E;--muted:#6B6B8A;--light:#F8F7FF;
+  --card:#FFFFFF;--border:rgba(167,139,250,0.2)
+}
+html{scroll-behavior:smooth}
+body{font-family:'Syne',sans-serif;background:var(--light);color:var(--ink);overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:0}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 3rem;display:flex;justify-content:space-between;align-items:center;backdrop-filter:blur(12px);background:rgba(248,247,255,0.85);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:'DM Serif Display',serif;font-size:1.4rem;color:var(--coral);letter-spacing:-0.02em}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{text-decoration:none;color:var(--muted);font-size:0.85rem;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;transition:color 0.2s}
+.nav-links a:hover{color:var(--coral)}
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:8rem 5rem 4rem;gap:4rem;position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;top:-20%;right:-10%;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(167,139,250,0.15) 0%,transparent 70%);pointer-events:none}
+.hero-text{position:relative;z-index:1}
+.hero-eyebrow{font-size:0.8rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--teal);margin-bottom:1rem;display:flex;align-items:center;gap:0.5rem}
+.hero-eyebrow::before{content:'';width:2rem;height:2px;background:var(--teal)}
+h1.hero-name{font-family:'DM Serif Display',serif;font-size:clamp(3rem,6vw,5rem);line-height:1.05;letter-spacing:-0.03em;margin-bottom:0.5rem}
+h1.hero-name span{color:var(--coral);font-style:italic}
+.hero-title{font-size:1.1rem;color:var(--muted);margin-bottom:2rem;font-weight:400;line-height:1.6}
+.hero-chips{display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:2.5rem}
+.chip{padding:0.35rem 0.9rem;border-radius:100px;font-size:0.78rem;font-weight:600;letter-spacing:0.03em}
+.chip-coral{background:var(--coral-light);color:var(--coral)}
+.chip-teal{background:var(--teal-light);color:var(--teal-dark)}
+.chip-purple{background:var(--purple-light);color:#7C3AED}
+.chip-amber{background:var(--amber-light);color:#D97706}
+.hero-cta{display:flex;gap:1rem;flex-wrap:wrap}
+.btn{padding:0.75rem 1.75rem;border-radius:100px;font-family:'Syne',sans-serif;font-weight:700;font-size:0.85rem;text-decoration:none;transition:all 0.2s;cursor:pointer;border:none;letter-spacing:0.02em}
+.btn-primary{background:var(--coral);color:white}
+.btn-primary:hover{background:#e55555;transform:translateY(-2px)}
+.btn-outline{background:transparent;color:var(--ink);border:2px solid var(--border)}
+.btn-outline:hover{border-color:var(--purple);color:var(--purple)}
+.hero-visual{display:flex;justify-content:center;align-items:center;position:relative;z-index:1}
+.avatar-wrap{position:relative;width:380px;height:380px}
+.avatar-bg-ring{position:absolute;inset:-20px;border-radius:50%;border:2px dashed rgba(167,139,250,0.3);animation:spin 20s linear infinite}
+.avatar-bg-blob{position:absolute;inset:10px;border-radius:60% 40% 70% 30%/50% 60% 40% 50%;background:linear-gradient(135deg,var(--coral-light),var(--purple-light));animation:blob 8s ease-in-out infinite}
+.avatar-svg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+.float-badge{position:absolute;padding:0.4rem 0.8rem;border-radius:0.75rem;font-size:0.75rem;font-weight:700;display:flex;align-items:center;gap:0.4rem;box-shadow:0 4px 20px rgba(0,0,0,0.1);animation:float 3s ease-in-out infinite}
+.fb1{top:10%;left:-5%;background:white;color:var(--teal-dark);animation-delay:0s}
+.fb2{bottom:20%;right:-8%;background:white;color:var(--coral);animation-delay:1s}
+.fb3{bottom:5%;left:5%;background:white;color:#7C3AED;animation-delay:2s}
+.fb-dot{width:8px;height:8px;border-radius:50%}
+.fb1 .fb-dot{background:var(--teal)}
+.fb2 .fb-dot{background:var(--coral)}
+.fb3 .fb-dot{background:var(--purple)}
+section{padding:6rem 5rem;position:relative;z-index:1}
+.section-label{font-size:0.75rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--coral);margin-bottom:0.75rem;display:flex;align-items:center;gap:0.5rem}
+.section-label::before{content:'';width:1.5rem;height:2px;background:var(--coral)}
+h2.section-title{font-family:'DM Serif Display',serif;font-size:clamp(2rem,4vw,3rem);letter-spacing:-0.02em;margin-bottom:3rem;line-height:1.15}
+h2.section-title em{color:var(--coral);font-style:italic}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.about-text p{color:var(--muted);line-height:1.9;margin-bottom:1.2rem;font-size:1rem}
+.about-stats{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+.stat-card{background:var(--card);border:1px solid var(--border);border-radius:1.25rem;padding:1.5rem;text-align:center;transition:transform 0.2s,box-shadow 0.2s}
+.stat-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(167,139,250,0.15)}
+.stat-num{font-family:'DM Serif Display',serif;font-size:2.5rem;color:var(--coral);display:block}
+.stat-lbl{font-size:0.8rem;color:var(--muted);font-weight:600;letter-spacing:0.04em}
+.skills-bg{background:var(--ink);color:white}
+.skills-bg .section-label{color:var(--teal)}
+.skills-bg h2.section-title{color:white}
+.skills-bg h2.section-title em{color:var(--coral)}
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.skill-group{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:1.25rem;padding:1.75rem;transition:all 0.3s}
+.skill-group:hover{background:rgba(255,255,255,0.08);border-color:rgba(167,139,250,0.4)}
+.skill-icon{font-size:1.75rem;margin-bottom:0.75rem}
+.skill-group h3{font-size:0.9rem;font-weight:700;letter-spacing:0.05em;margin-bottom:1rem;color:white}
+.skill-pills{display:flex;flex-wrap:wrap;gap:0.4rem}
+.skill-pill{padding:0.25rem 0.65rem;border-radius:100px;font-size:0.72rem;font-weight:600;font-family:'DM Mono',monospace}
+.sp-coral{background:rgba(255,107,107,0.2);color:#FF9F9F}
+.sp-teal{background:rgba(0,201,167,0.2);color:#5FDED0}
+.sp-amber{background:rgba(255,179,71,0.2);color:#FFD280}
+.sp-purple{background:rgba(167,139,250,0.2);color:#C4B5FD}
+.projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.proj-card{background:var(--card);border:1px solid var(--border);border-radius:1.5rem;padding:2rem;position:relative;overflow:hidden;transition:all 0.3s}
+.proj-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px}
+.proj-card:nth-child(1)::before{background:linear-gradient(90deg,var(--coral),var(--amber))}
+.proj-card:nth-child(2)::before{background:linear-gradient(90deg,var(--teal),var(--purple))}
+.proj-card:nth-child(3)::before{background:linear-gradient(90deg,var(--purple),var(--coral))}
+.proj-card:hover{transform:translateY(-6px);box-shadow:0 20px 60px rgba(167,139,250,0.15)}
+.proj-emoji{font-size:2rem;margin-bottom:1rem;display:block}
+.proj-card h3{font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;letter-spacing:-0.01em}
+.proj-card p{color:var(--muted);font-size:0.87rem;line-height:1.7;margin-bottom:1.25rem}
+.proj-tags{display:flex;flex-wrap:wrap;gap:0.4rem}
+.proj-tag{padding:0.2rem 0.6rem;border-radius:100px;font-size:0.7rem;font-weight:600;font-family:'DM Mono',monospace;background:var(--light);color:var(--muted);border:1px solid var(--border)}
+.exp-timeline{display:flex;flex-direction:column;gap:2rem;position:relative;padding-left:2rem}
+.exp-timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--coral),var(--purple),var(--teal))}
+.exp-item{position:relative;background:var(--card);border:1px solid var(--border);border-radius:1.25rem;padding:1.75rem 2rem}
+.exp-item::before{content:'';position:absolute;left:-2.45rem;top:1.75rem;width:12px;height:12px;border-radius:50%;background:var(--coral);border:3px solid var(--light)}
+.exp-meta{display:flex;gap:0.75rem;align-items:center;margin-bottom:0.5rem;flex-wrap:wrap}
+.exp-place{font-size:0.78rem;font-weight:700;letter-spacing:0.04em;color:var(--teal-dark)}
+.exp-year{font-size:0.72rem;font-family:'DM Mono',monospace;color:var(--muted)}
+.exp-item h3{font-size:1rem;font-weight:700;margin-bottom:0.5rem}
+.exp-item p{color:var(--muted);font-size:0.87rem;line-height:1.7}
+.interests-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.interest-card{border-radius:1.25rem;padding:2rem 1.5rem;text-align:center;transition:transform 0.2s}
+.interest-card:hover{transform:translateY(-4px)}
+.ic1{background:var(--coral-light)}
+.ic2{background:var(--teal-light)}
+.ic3{background:var(--amber-light)}
+.interest-icon{font-size:2.5rem;margin-bottom:0.75rem;display:block}
+.interest-card h3{font-size:0.9rem;font-weight:700;margin-bottom:0.4rem}
+.interest-card p{font-size:0.8rem;color:var(--muted);line-height:1.5}
+.contact-bg{background:linear-gradient(135deg,var(--ink) 0%,var(--ink2) 100%);color:white;text-align:center}
+.contact-bg .section-label{justify-content:center;color:var(--teal)}
+.contact-bg .section-label::before{display:none}
+.contact-bg h2{color:white;margin-bottom:1rem}
+.contact-bg p{color:rgba(255,255,255,0.6);max-width:500px;margin:0 auto 2.5rem;font-size:1rem;line-height:1.7}
+.contact-links{display:flex;justify-content:center;gap:1.25rem;flex-wrap:wrap}
+.contact-link{display:flex;align-items:center;gap:0.5rem;padding:0.75rem 1.5rem;border-radius:100px;text-decoration:none;font-weight:700;font-size:0.85rem;transition:all 0.2s}
+.cl-email{background:var(--coral);color:white}
+.cl-linkedin{background:rgba(255,255,255,0.1);color:white;border:1px solid rgba(255,255,255,0.2)}
+.cl-github{background:rgba(255,255,255,0.1);color:white;border:1px solid rgba(255,255,255,0.2)}
+.cl-email:hover,.cl-linkedin:hover,.cl-github:hover{transform:translateY(-3px);opacity:0.9}
+footer{text-align:center;padding:2rem;font-size:0.8rem;color:var(--muted);border-top:1px solid var(--border)}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes blob{0%,100%{border-radius:60% 40% 70% 30%/50% 60% 40% 50%}50%{border-radius:40% 60% 30% 70%/60% 40% 60% 40%}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.fade-up{animation:fadeUp 0.7s ease forwards}
+.viz-section{background:var(--purple-light)}
+.skill-bars{display:grid;gap:1rem;max-width:600px}
+.bar-row{display:flex;flex-direction:column;gap:0.3rem}
+.bar-label{display:flex;justify-content:space-between;font-size:0.82rem;font-weight:600}
+.bar-track{height:8px;background:rgba(167,139,250,0.2);border-radius:100px;overflow:hidden}
+.bar-fill{height:100%;border-radius:100px;transition:width 1.5s ease}
+.bar-py{background:linear-gradient(90deg,var(--coral),var(--amber));width:90%}
+.bar-sql{background:linear-gradient(90deg,var(--teal),var(--purple));width:80%}
+.bar-java{background:linear-gradient(90deg,var(--purple),var(--coral));width:70%}
+.bar-pd{background:linear-gradient(90deg,var(--amber),var(--teal));width:85%}
+.bar-en{background:linear-gradient(90deg,var(--coral),var(--purple));width:95%}
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-logo">RC</span>
+  <ul class="nav-links">
+    <li><a href="#about">Acerca</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Proyectos</a></li>
+    <li><a href="#contact">Contacto</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-text fade-up">
+    <div class="hero-eyebrow">Data Scientist · ITAM</div>
+    <h1 class="hero-name">Regina<br><span>Cabral.</span></h1>
+    <p class="hero-title">Transformo datos en <strong>historias visuales</strong>.<br>Apasionada por encontrar patrones donde otros ven ruido.</p>
+    <div class="hero-chips">
+      <span class="chip chip-coral">🐍 Python</span>
+      <span class="chip chip-teal">📊 Data Viz</span>
+      <span class="chip chip-purple">🗄️ SQL</span>
+      <span class="chip chip-amber">🔢 Estadística</span>
+      <span class="chip chip-coral">📐 Teoría de Información</span>
+    </div>
+    <div class="hero-cta">
+      <a href="#projects" class="btn btn-primary">Ver proyectos</a>
+      <a href="#contact" class="btn btn-outline">Contáctame</a>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="avatar-wrap">
+      <div class="avatar-bg-ring"></div>
+      <div class="avatar-bg-blob"></div>
+      <div class="avatar-svg">
+        <svg width="280" height="280" viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="140" cy="230" rx="62" ry="45" fill="#FFE0D4"/>
+          <path d="M85 215 Q90 190 140 188 Q190 190 195 215 Q175 255 140 258 Q105 255 85 215Z" fill="#A78BFA"/>
+          <rect x="128" y="188" width="24" height="22" rx="5" fill="#C8956A"/>
+          <ellipse cx="140" cy="155" rx="52" ry="55" fill="#C8956A"/>
+          <path d="M88 145 Q82 110 95 85 Q110 60 140 58 Q170 60 185 85 Q198 110 192 145" fill="#4A2C0A"/>
+          <path d="M88 145 Q78 165 82 185 Q86 200 92 210" fill="#4A2C0A" stroke="#4A2C0A" stroke-width="18" stroke-linecap="round" fill="none"/>
+          <path d="M192 145 Q202 165 198 185 Q194 200 188 210" fill="#4A2C0A" stroke="#4A2C0A" stroke-width="18" stroke-linecap="round" fill="none"/>
+          <path d="M92 120 Q100 85 120 72 Q140 62 160 72 Q180 85 188 120" fill="#4A2C0A"/>
+          <path d="M87 150 Q93 140 99 148 Q105 156 111 147" fill="none" stroke="#3A1C00" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M181 150 Q175 140 169 148 Q163 156 157 147" fill="none" stroke="#3A1C00" stroke-width="2.5" stroke-linecap="round"/>
+          <ellipse cx="122" cy="155" rx="7" ry="8" fill="white"/>
+          <ellipse cx="158" cy="155" rx="7" ry="8" fill="white"/>
+          <ellipse cx="123" cy="156" rx="4.5" ry="5.5" fill="#3A1C00"/>
+          <ellipse cx="159" cy="156" rx="4.5" ry="5.5" fill="#3A1C00"/>
+          <circle cx="124" cy="155" r="1.5" fill="white"/>
+          <circle cx="160" cy="155" r="1.5" fill="white"/>
+          <path d="M114 144 Q122 140 130 143" fill="none" stroke="#3A1C00" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M150 143 Q158 140 166 144" fill="none" stroke="#3A1C00" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M137 165 Q140 172 143 165" fill="none" stroke="#A06040" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M126 178 Q140 188 154 178" fill="none" stroke="#A06040" stroke-width="2.5" stroke-linecap="round"/>
+          <ellipse cx="112" cy="170" rx="10" ry="6" fill="rgba(255,150,120,0.3)"/>
+          <ellipse cx="168" cy="170" rx="10" ry="6" fill="rgba(255,150,120,0.3)"/>
+          <circle cx="89" cy="168" r="5" fill="#FF6B6B"/>
+          <circle cx="89" cy="175" r="4" fill="#FFB347"/>
+          <circle cx="191" cy="168" r="5" fill="#FF6B6B"/>
+          <circle cx="191" cy="175" r="4" fill="#FFB347"/>
+          <rect x="95" y="235" width="90" height="55" rx="6" fill="#2D2D4E"/>
+          <rect x="99" y="239" width="82" height="42" rx="4" fill="#1A1A2E"/>
+          <rect x="103" y="243" width="74" height="34" rx="2" fill="#0F0F1E"/>
+          <polyline points="107,270 115,260 125,265 135,255 145,262 155,250 165,258 173,252" fill="none" stroke="#00C9A7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="121" y="283" width="38" height="5" rx="2" fill="#3D3D5E"/>
+        </svg>
+      </div>
+      <div class="float-badge fb1"><span class="fb-dot"></span> GPA 9.75</div>
+      <div class="float-badge fb2"><span class="fb-dot"></span> PyPI Published</div>
+      <div class="float-badge fb3"><span class="fb-dot"></span> Data Science</div>
+    </div>
+  </div>
+</section>
+
+<section id="about" style="background:white">
+  <div class="section-label">Sobre mí</div>
+  <div class="about-grid">
+    <div class="about-text">
+      <h2 class="section-title">Datos, código<br>y <em>curiosidad</em></h2>
+      <p>Soy estudiante de Ciencia de Datos en el ITAM con beca por mérito académico. Me apasiona transformar datos complejos en visualizaciones que cuenten historias claras y poderosas.</p>
+      <p>Desde diseñar esquemas relacionales hasta publicar librerías en PyPI, disfruto cada capa del pipeline de datos. Cuando no estoy programando, me encuentras leyendo, viajando o siguiendo la F1 🏎️.</p>
+      <p>Actualmente busco oportunidades para aplicar mis habilidades en proyectos con impacto real.</p>
+    </div>
+    <div class="about-stats">
+      <div class="stat-card"><span class="stat-num">9.75</span><span class="stat-lbl">GPA / 10</span></div>
+      <div class="stat-card"><span class="stat-num">3+</span><span class="stat-lbl">Proyectos publicados</span></div>
+      <div class="stat-card"><span class="stat-num">2K+</span><span class="stat-lbl">Municipios analizados</span></div>
+      <div class="stat-card"><span class="stat-num">2028</span><span class="stat-lbl">Egreso ITAM</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="skills" class="skills-bg">
+  <div class="section-label">Habilidades</div>
+  <h2 class="section-title">Mi <em>stack</em> técnico</h2>
+  <div class="skills-grid">
+    <div class="skill-group">
+      <div class="skill-icon">🐍</div>
+      <h3>LENGUAJES</h3>
+      <div class="skill-pills">
+        <span class="skill-pill sp-coral">Python</span>
+        <span class="skill-pill sp-teal">SQL</span>
+        <span class="skill-pill sp-amber">Java</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-icon">📦</div>
+      <h3>LIBRERÍAS</h3>
+      <div class="skill-pills">
+        <span class="skill-pill sp-teal">Pandas</span>
+        <span class="skill-pill sp-purple">NumPy</span>
+        <span class="skill-pill sp-coral">Matplotlib</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-icon">🛠️</div>
+      <h3>HERRAMIENTAS</h3>
+      <div class="skill-pills">
+        <span class="skill-pill sp-amber">Git</span>
+        <span class="skill-pill sp-teal">GitHub</span>
+        <span class="skill-pill sp-coral">Excel</span>
+        <span class="skill-pill sp-purple">PyPI</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-icon">📐</div>
+      <h3>ESPECIALIDADES</h3>
+      <div class="skill-pills">
+        <span class="skill-pill sp-coral">Visualización</span>
+        <span class="skill-pill sp-teal">Estadística</span>
+        <span class="skill-pill sp-amber">Diagramas Voronoi</span>
+        <span class="skill-pill sp-purple">Teoría de Información</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-icon">🌎</div>
+      <h3>IDIOMAS</h3>
+      <div class="skill-pills">
+        <span class="skill-pill sp-teal">Español (nativo)</span>
+        <span class="skill-pill sp-coral">Inglés (fluido)</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-icon">📊</div>
+      <h3>BASES DE DATOS</h3>
+      <div class="skill-pills">
+        <span class="skill-pill sp-purple">Diseño relacional</span>
+        <span class="skill-pill sp-teal">4NF</span>
+        <span class="skill-pill sp-coral">INEGI / DENUE</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="viz-section">
+  <div class="section-label">Nivel de habilidad</div>
+  <h2 class="section-title">Mis <em>fortalezas</em></h2>
+  <div class="skill-bars">
+    <div class="bar-row">
+      <div class="bar-label"><span>Python</span><span>90%</span></div>
+      <div class="bar-track"><div class="bar-fill bar-py"></div></div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label"><span>Pandas / NumPy</span><span>85%</span></div>
+      <div class="bar-track"><div class="bar-fill bar-pd"></div></div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label"><span>SQL</span><span>80%</span></div>
+      <div class="bar-track"><div class="bar-fill bar-sql"></div></div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label"><span>Java</span><span>70%</span></div>
+      <div class="bar-track"><div class="bar-fill bar-java"></div></div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label"><span>Inglés</span><span>95%</span></div>
+      <div class="bar-track"><div class="bar-fill bar-en"></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="projects" style="background:white">
+  <div class="section-label">Portafolio</div>
+  <h2 class="section-title">Proyectos <em>destacados</em></h2>
+  <div class="projects-grid">
+    <div class="proj-card">
+      <span class="proj-emoji">🔤</span>
+      <h3>Wordle Solver</h3>
+      <p>Estrategia óptima de resolución combinando tablas de entropía máxima precalculadas con lógica adaptativa basada en teoría de información.</p>
+      <div class="proj-tags">
+        <span class="proj-tag">Python</span>
+        <span class="proj-tag">Teoría de Información</span>
+        <span class="proj-tag">Entropía</span>
+      </div>
+    </div>
+    <div class="proj-card">
+      <span class="proj-emoji">🚗</span>
+      <h3>Chicago Traffic Accidents</h3>
+      <p>Diseño de esquema relacional en 4NF y análisis SQL para identificar los factores clave que contribuyen a accidentes de tráfico en Chicago.</p>
+      <div class="proj-tags">
+        <span class="proj-tag">SQL</span>
+        <span class="proj-tag">4NF</span>
+        <span class="proj-tag">Análisis de datos</span>
+      </div>
+    </div>
+    <div class="proj-card">
+      <span class="proj-emoji">📦</span>
+      <h3>Open-Source Python Library</h3>
+      <p>Librería publicada en PyPI que genera datasets sintéticos realistas usando distribuciones probabilísticas. Disponible para la comunidad.</p>
+      <div class="proj-tags">
+        <span class="proj-tag">Python</span>
+        <span class="proj-tag">PyPI</span>
+        <span class="proj-tag">Open Source</span>
+        <span class="proj-tag">Probabilidad</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience" style="background:var(--light)">
+  <div class="section-label">Trayectoria</div>
+  <h2 class="section-title">Lo que he <em>construido</em></h2>
+  <div class="exp-timeline">
+    <div class="exp-item">
+      <div class="exp-meta">
+        <span class="exp-place">ITAM Datatón</span>
+        <span class="exp-year">2024</span>
+      </div>
+      <h3>Participante — Optimización geoespacial</h3>
+      <p>Identificación de ubicaciones óptimas para 200 farmacias en México usando datos INEGI/DENUE y diagramas de Voronoi en más de 2,000 municipios.</p>
+    </div>
+    <div class="exp-item">
+      <div class="exp-meta">
+        <span class="exp-place">ITAM Construye / BRICO</span>
+        <span class="exp-year">2025</span>
+      </div>
+      <h3>Voluntaria — Servicio comunitario</h3>
+      <p>Coordinación de eventos culturales y distribución de alimentos para poblaciones vulnerables. Trabajo en equipo y liderazgo comunitario.</p>
+    </div>
+    <div class="exp-item">
+      <div class="exp-meta">
+        <span class="exp-place">Bachillerato Alexander Bain</span>
+        <span class="exp-year">2023–2024</span>
+      </div>
+      <h3>Vicepresidenta — Consejo Estudiantil</h3>
+      <p>Representación del estudiantado en decisiones institucionales y coordinación de eventos culturales y campañas de donación.</p>
+    </div>
+    <div class="exp-item">
+      <div class="exp-meta">
+        <span class="exp-place">Model United Nations — BAB</span>
+        <span class="exp-year">2019–2023</span>
+      </div>
+      <h3>Chair's President & Delegate — MUN</h3>
+      <p>Liderazgo en estrategia y comunicación del equipo. Análisis de perspectivas geopolíticas y propuesta de soluciones a conflictos globales.</p>
+    </div>
+  </div>
+</section>
+
+<section style="background:white">
+  <div class="section-label">Más sobre mí</div>
+  <h2 class="section-title">Fuera del <em>código</em></h2>
+  <div class="interests-grid">
+    <div class="interest-card ic1">
+      <span class="interest-icon">✈️</span>
+      <h3>Viajera</h3>
+      <p>Explorar nuevos lugares y culturas alimenta mi curiosidad y perspectiva global.</p>
+    </div>
+    <div class="interest-card ic2">
+      <span class="interest-icon">📚</span>
+      <h3>Lectora</h3>
+      <p>Los libros son mi forma favorita de aprender y desconectarme del mundo digital.</p>
+    </div>
+    <div class="interest-card ic3">
+      <span class="interest-icon">🏎️</span>
+      <h3>Fórmula 1</h3>
+      <p>La F1 combina perfectamente velocidad, datos, estrategia y emoción. ¡Mi deporte favorito!</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact-bg">
+  <div class="section-label">Contacto</div>
+  <h2 class="section-title" style="color:white;margin-bottom:1rem">¿Hablamos de <em>datos</em>?</h2>
+  <p>Siempre estoy abierta a nuevas oportunidades, colaboraciones o simplemente platicar sobre data science. ¡Escríbeme!</p>
+  <div class="contact-links">
+    <a href="mailto:reginacabralc24@gmail.com" class="contact-link cl-email">📧 reginacabralc24@gmail.com</a>
+    <a href="https://linkedin.com/in/TU-USUARIO" class="contact-link cl-linkedin">💼 LinkedIn</a>
+    <a href="https://github.com/TU-USUARIO" class="contact-link cl-github">🐙 GitHub</a>
+  </div>
+</section>
+
+<footer>
+  <p>Diseñado con 💜 por Regina Cabral · 2025</p>
+</footer>
+
+<script>
+const bars = document.querySelectorAll('.bar-fill');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting) {
+      e.target.style.width = e.target.style.width || getComputedStyle(e.target).width;
+    }
+  });
+},{threshold:0.3});
+bars.forEach(b => obs.observe(b));
+</script>
+</body>
+</html>
