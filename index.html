@@ -1024,10 +1024,15 @@ footer{text-align:center;padding:2rem;font-size:0.8rem;color:var(--muted);border
     <div class="github-card github-card-compact github-contrib-top github-contrib-card">
   <h3>Contributions</h3>
   <img
-    src="https://github-readme-streak-stats.herokuapp.com/?user=reginacabralc&theme=transparent&hide_border=true&ring=FF6B6B&fire=FF6B6B&currStreakLabel=1A1A2E&sideLabels=6B6B8A&dates=6B6B8A&sideNums=1A1A2E&currStreakNum=1A1A2E"
-    alt="GitHub contribution streak for Regina Cabral"
-    class="github-stats-img github-stats-img-compact"
-  />
+  id="streak-img"
+  alt="GitHub contribution streak for Regina Cabral"
+  class="github-stats-img github-stats-img-compact"
+/>
+<script>
+  const today = new Date().toISOString().split('T')[0];
+  document.getElementById('streak-img').src =
+    `https://github-readme-streak-stats.herokuapp.com/?user=reginacabralc&theme=transparent&hide_border=true&ring=FF6B6B&fire=FF6B6B&currStreakLabel=1A1A2E&sideLabels=6B6B8A&dates=6B6B8A&sideNums=1A1A2E&currStreakNum=1A1A2E&t=${today}`;
+</script>
 </div>
 
   <div class="github-grid github-grid-split">
@@ -1127,7 +1132,6 @@ footer{text-align:center;padding:2rem;font-size:0.8rem;color:var(--muted);border
 <footer>
   Designed by Regina Cabral 2026
 </footer>
-
 <script>
 async function loadGitHubMiniStats() {
   try {
@@ -1144,8 +1148,6 @@ async function loadGitHubMiniStats() {
     }
 
     // --- Fetch ALL event pages (GitHub max: 10 pages × 100 = 300 events) ---
-    // One page of 100 events isn't enough — events include stars, comments,
-    // forks etc., so PushEvents from older repos get pushed out of page 1.
     let allEvents = [];
     for (let page = 1; page <= 10; page++) {
       const res = await fetch(
@@ -1154,17 +1156,14 @@ async function loadGitHubMiniStats() {
       const data = await res.json();
       if (!Array.isArray(data) || data.length === 0) break;
       allEvents = allEvents.concat(data);
-      if (data.length < 100) break; // reached the last page
+      if (data.length < 100) break;
     }
 
-    // --- Count commits per repo, excluding the portfolio site itself ---
-    const EXCLUDE = new Set(["reginacabralc.github.io"]);
+    // --- Count commits per repo ---
     const repoCounts = {};
-
     allEvents.forEach(event => {
       if (event.type !== "PushEvent" || !event.repo?.name) return;
       const repoName = event.repo.name.split("/")[1] || event.repo.name;
-      if (EXCLUDE.has(repoName)) return;
       const commits = Array.isArray(event.payload?.commits) ? event.payload.commits.length : 1;
       repoCounts[repoName] = (repoCounts[repoName] || 0) + commits;
     });
@@ -1174,13 +1173,14 @@ async function loadGitHubMiniStats() {
       .slice(0, 6);
 
     const ctx = document.getElementById("githubRepoChart");
+
     if (ctx && sortedRepos.length > 0) {
       new Chart(ctx, {
         type: "bar",
         data: {
           labels: sortedRepos.map(i => i[0]),
           datasets: [{
-            label: "Commits",
+            label: "Recent Contributions",
             data: sortedRepos.map(i => i[1]),
             backgroundColor: [
               "rgba(255,107,107,0.75)",
@@ -1199,14 +1199,7 @@ async function loadGitHubMiniStats() {
           responsive: true,
           maintainAspectRatio: false,
           plugins: {
-            legend: { display: false },
-            tooltip: {
-              callbacks: {
-                // Shows "Last 90 days" context on hover
-                title: items => items[0].label,
-                label: items => ` ${items.raw} commits · last 90 days`
-              }
-            }
+            legend: { display: false }
           },
           scales: {
             x: {
@@ -1222,8 +1215,7 @@ async function loadGitHubMiniStats() {
         }
       });
     } else if (ctx) {
-      ctx.parentElement.innerHTML +=
-        '<p style="color:#6B6B8A;font-size:0.95rem;">Not enough recent public contribution data to render the chart yet.</p>';
+      ctx.parentElement.innerHTML += '<p style="color:#6B6B8A;font-size:0.95rem;">Not enough recent public contribution data to render the chart yet.</p>';
     }
 
   } catch (error) {
