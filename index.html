@@ -1133,50 +1133,55 @@ async function loadGitHubMiniStats() {
   try {
     const username = "reginacabralc";
 
+    // --- Mini stats (repos, stars, forks) ---
     const reposRes = await fetch(`https://api.github.com/users/${username}/repos?per_page=100`);
     const repos = await reposRes.json();
 
-    const publicRepos = Array.isArray(repos) ? repos.length : 0;
-    const totalStars = Array.isArray(repos)
-      ? repos.reduce((sum, repo) => sum + (repo.stargazers_count || 0), 0)
-      : 0;
-    const totalForks = Array.isArray(repos)
-      ? repos.reduce((sum, repo) => sum + (repo.forks_count || 0), 0)
-      : 0;
+    if (Array.isArray(repos)) {
+      document.getElementById("repo-count").textContent = repos.length;
+      document.getElementById("stars-count").textContent = repos.reduce((s, r) => s + (r.stargazers_count || 0), 0);
+      document.getElementById("forks-count").textContent = repos.reduce((s, r) => s + (r.forks_count || 0), 0);
+    }
 
-    document.getElementById("repo-count").textContent = publicRepos;
-    document.getElementById("stars-count").textContent = totalStars;
-    document.getElementById("forks-count").textContent = totalForks;
+    // --- Fetch ALL event pages (GitHub max: 10 pages × 100 = 300 events) ---
+    // One page of 100 events isn't enough — events include stars, comments,
+    // forks etc., so PushEvents from older repos get pushed out of page 1.
+    let allEvents = [];
+    for (let page = 1; page <= 10; page++) {
+      const res = await fetch(
+        `https://api.github.com/users/${username}/events/public?per_page=100&page=${page}`
+      );
+      const data = await res.json();
+      if (!Array.isArray(data) || data.length === 0) break;
+      allEvents = allEvents.concat(data);
+      if (data.length < 100) break; // reached the last page
+    }
 
-    const eventsRes = await fetch(`https://api.github.com/users/${username}/events/public?per_page=100`);
-    const events = await eventsRes.json();
-
+    // --- Count commits per repo, excluding the portfolio site itself ---
+    const EXCLUDE = new Set(["reginacabralc.github.io"]);
     const repoCounts = {};
 
-    if (Array.isArray(events)) {
-      events.forEach(event => {
-        if (event.type === "PushEvent" && event.repo && event.repo.name) {
-          const repoName = event.repo.name.split("/")[1] || event.repo.name;
-          const commitCount = Array.isArray(event.payload?.commits) ? event.payload.commits.length : 1;
-          repoCounts[repoName] = (repoCounts[repoName] || 0) + commitCount;
-        }
-      });
-    }
+    allEvents.forEach(event => {
+      if (event.type !== "PushEvent" || !event.repo?.name) return;
+      const repoName = event.repo.name.split("/")[1] || event.repo.name;
+      if (EXCLUDE.has(repoName)) return;
+      const commits = Array.isArray(event.payload?.commits) ? event.payload.commits.length : 1;
+      repoCounts[repoName] = (repoCounts[repoName] || 0) + commits;
+    });
 
     const sortedRepos = Object.entries(repoCounts)
       .sort((a, b) => b[1] - a[1])
       .slice(0, 6);
 
     const ctx = document.getElementById("githubRepoChart");
-
     if (ctx && sortedRepos.length > 0) {
       new Chart(ctx, {
         type: "bar",
         data: {
-          labels: sortedRepos.map(item => item[0]),
+          labels: sortedRepos.map(i => i[0]),
           datasets: [{
-            label: "Recent Contributions",
-            data: sortedRepos.map(item => item[1]),
+            label: "Commits",
+            data: sortedRepos.map(i => i[1]),
             backgroundColor: [
               "rgba(255,107,107,0.75)",
               "rgba(0,201,167,0.75)",
@@ -1194,7 +1199,14 @@ async function loadGitHubMiniStats() {
           responsive: true,
           maintainAspectRatio: false,
           plugins: {
-            legend: { display: false }
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                // Shows "Last 90 days" context on hover
+                title: items => items[0].label,
+                label: items => ` ${items.raw} commits · last 90 days`
+              }
+            }
           },
           scales: {
             x: {
@@ -1210,8 +1222,10 @@ async function loadGitHubMiniStats() {
         }
       });
     } else if (ctx) {
-      ctx.parentElement.innerHTML += '<p style="color:#6B6B8A;font-size:0.95rem;">Not enough recent public contribution data to render the chart yet.</p>';
+      ctx.parentElement.innerHTML +=
+        '<p style="color:#6B6B8A;font-size:0.95rem;">Not enough recent public contribution data to render the chart yet.</p>';
     }
+
   } catch (error) {
     console.error("GitHub data could not be loaded", error);
   }
