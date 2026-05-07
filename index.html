@@ -194,7 +194,7 @@ h2.section-title em{color:var(--coral);font-style:italic}
   display:grid;
   grid-template-columns:1.35fr 0.75fr;
   gap:2rem;
-  align-items:start;
+  align-items:stretch;
   margin-top:1.8rem;
 }
 .about-main-card{
@@ -251,7 +251,12 @@ h2.section-title em{color:var(--coral);font-style:italic}
 .bubble-coral{background:linear-gradient(180deg, #FFE8E8 0%, #FFF1F1 100%);}
 .bubble-teal{background:linear-gradient(180deg, #FFE8E8 0%, #FFF1F1 100%);}
 .bubble-purple{background:linear-gradient(180deg, #FFE8E8 0%, #FFF1F1 100%);}
-.about-stats-column{display:grid;gap:1rem}
+.about-stats-column{
+  display:grid;
+  grid-template-rows:repeat(3, 1fr);
+  gap:1rem;
+  height:100%;
+}
 .about-stat-card{
   background:var(--card);
   border:1px solid var(--border);
@@ -494,6 +499,14 @@ h2.section-title em{color:var(--coral);font-style:italic}
   max-height:260px;
   object-fit:contain;
 }
+ .github-contrib-card{
+  padding:1.1rem 1.25rem;
+}
+
+.github-contrib-card .github-stats-img-compact{
+  max-height:220px;
+}
+
 .github-contrib-top{
   margin-bottom:1.5rem;
 }
@@ -759,16 +772,21 @@ footer{text-align:center;padding:2rem;font-size:0.8rem;color:var(--muted);border
       </div>
     </div>
 
-    <!-- Right side -->
+        <!-- Right side -->
     <div class="about-stats-column">
       <div class="about-stat-card stat-coral">
-        <span class="about-stat-number">9.75</span>
-        <span class="about-stat-label">GPA / 10</span>
+        <span class="about-stat-number">11+</span>
+        <span class="about-stat-label">Repositories contributed to</span>
       </div>
 
       <div class="about-stat-card stat-purple">
         <span class="about-stat-number">3+</span>
         <span class="about-stat-label">Open-source projects</span>
+      </div>
+
+      <div class="about-stat-card stat-coral">
+        <span class="about-stat-number">12+</span>
+        <span class="about-stat-label">Technical skills</span>
       </div>
     </div>
   </div>
@@ -1000,7 +1018,7 @@ footer{text-align:center;padding:2rem;font-size:0.8rem;color:var(--muted);border
 
   
 
-    <div class="github-card github-card-compact github-contrib-top">
+    <div class="github-card github-card-compact github-contrib-top github-contrib-card">
   <h3>Contributions</h3>
   <img
     src="https://github-readme-streak-stats.herokuapp.com/?user=reginacabralc&theme=transparent&hide_border=true&ring=FF6B6B&fire=FF6B6B&currStreakLabel=1A1A2E&sideLabels=6B6B8A&dates=6B6B8A&sideNums=1A1A2E&currStreakNum=1A1A2E"
